@@ -16,5 +16,10 @@ namespace CursoWindowsForms
         {
             InitializeComponent();
         }
+
+        private void btn_Sair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
