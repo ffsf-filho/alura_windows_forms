@@ -30,6 +30,7 @@
         {
             this.lbl_Titulo = new System.Windows.Forms.Label();
             this.btn_Sair = new System.Windows.Forms.Button();
+            this.btn_MotificaTextoLabel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_Titulo
@@ -44,7 +45,7 @@
             // 
             // btn_Sair
             // 
-            this.btn_Sair.Location = new System.Drawing.Point(638, 415);
+            this.btn_Sair.Location = new System.Drawing.Point(250, 265);
             this.btn_Sair.Name = "btn_Sair";
             this.btn_Sair.Size = new System.Drawing.Size(150, 23);
             this.btn_Sair.TabIndex = 1;
@@ -52,11 +53,22 @@
             this.btn_Sair.UseVisualStyleBackColor = true;
             this.btn_Sair.Click += new System.EventHandler(this.btn_Sair_Click);
             // 
+            // btn_MotificaTextoLabel
+            // 
+            this.btn_MotificaTextoLabel.Location = new System.Drawing.Point(34, 52);
+            this.btn_MotificaTextoLabel.Name = "btn_MotificaTextoLabel";
+            this.btn_MotificaTextoLabel.Size = new System.Drawing.Size(209, 23);
+            this.btn_MotificaTextoLabel.TabIndex = 2;
+            this.btn_MotificaTextoLabel.Text = "Modifica Texto do Label";
+            this.btn_MotificaTextoLabel.UseVisualStyleBackColor = true;
+            this.btn_MotificaTextoLabel.Click += new System.EventHandler(this.btn_MotificaTextoLabel_Click);
+            // 
             // Frm_HelloWorld
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(412, 300);
+            this.Controls.Add(this.btn_MotificaTextoLabel);
             this.Controls.Add(this.btn_Sair);
             this.Controls.Add(this.lbl_Titulo);
             this.Name = "Frm_HelloWorld";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Label lbl_Titulo;
         private System.Windows.Forms.Button btn_Sair;
+        private System.Windows.Forms.Button btn_MotificaTextoLabel;
     }
 }
