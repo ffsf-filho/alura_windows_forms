@@ -31,6 +31,7 @@
             this.lbl_Titulo = new System.Windows.Forms.Label();
             this.btn_Sair = new System.Windows.Forms.Button();
             this.btn_MotificaTextoLabel = new System.Windows.Forms.Button();
+            this.txt_ConteudoLabel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbl_Titulo
@@ -63,11 +64,19 @@
             this.btn_MotificaTextoLabel.UseVisualStyleBackColor = true;
             this.btn_MotificaTextoLabel.Click += new System.EventHandler(this.btn_MotificaTextoLabel_Click);
             // 
+            // txt_ConteudoLabel
+            // 
+            this.txt_ConteudoLabel.Location = new System.Drawing.Point(34, 81);
+            this.txt_ConteudoLabel.Name = "txt_ConteudoLabel";
+            this.txt_ConteudoLabel.Size = new System.Drawing.Size(350, 20);
+            this.txt_ConteudoLabel.TabIndex = 3;
+            // 
             // Frm_HelloWorld
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 300);
+            this.Controls.Add(this.txt_ConteudoLabel);
             this.Controls.Add(this.btn_MotificaTextoLabel);
             this.Controls.Add(this.btn_Sair);
             this.Controls.Add(this.lbl_Titulo);
@@ -83,5 +92,6 @@
         private System.Windows.Forms.Label lbl_Titulo;
         private System.Windows.Forms.Button btn_Sair;
         private System.Windows.Forms.Button btn_MotificaTextoLabel;
+        private System.Windows.Forms.TextBox txt_ConteudoLabel;
     }
 }
