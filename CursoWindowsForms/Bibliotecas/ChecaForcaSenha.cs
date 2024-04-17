@@ -1,6 +1,11 @@
- public class ChecaForcaSenha
-    {
+﻿using System;
+using System.Text.RegularExpressions;
 
+namespace CursoWindowsForms.Bibliotecas
+{
+    //http://www.macoratti.net/13/01/c_vfs1.htm
+    public class ChecaForcaSenha
+    {
         public enum ForcaDaSenha
         {
             Inaceitavel,
@@ -10,7 +15,7 @@
             Segura
         }
 
-           public int geraPontosSenha(string senha)
+        public int geraPontosSenha(string senha)
         {
             if (senha == null) return 0;
             int pontosPorTamanho = GetPontoPorTamanho(senha);
@@ -65,7 +70,6 @@
             }
         }
 
-
         public ForcaDaSenha GetForcaDaSenha(string senha)
         {
             int placar = geraPontosSenha(senha);
@@ -82,3 +86,4 @@
                 return ForcaDaSenha.Segura;
         }
     }
+}
