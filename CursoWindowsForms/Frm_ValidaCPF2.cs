@@ -14,18 +14,28 @@ namespace CursoWindowsForms
 
         private void Btn_Valida_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Você deseja realmente validar o CPF?", "Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                ValidaCPF validaCPF = new ValidaCPF();
-                bool cpfValido = validaCPF.Valida(Msk_CPF.Text);
+            string vConteudo = Msk_CPF.Text;
+            vConteudo = vConteudo.Replace(".", "").Replace("-", "").Trim();
 
-                if (cpfValido)
+            if (string.IsNullOrWhiteSpace(vConteudo) || vConteudo.Length < 11)
+            {
+                MessageBox.Show("Você deve digitar um CPF, ele deve conter 11 digitos.", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if(MessageBox.Show("Você deseja realmente validar o CPF?", "Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("CPF VÁLIDO", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("CPF VÁLIDO", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ValidaCPF validaCPF = new ValidaCPF();
+                    bool cpfValido = validaCPF.Valida(Msk_CPF.Text);
+
+                    if (cpfValido)
+                    {
+                        MessageBox.Show("CPF VÁLIDO", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("CPF VÁLIDO", "Mensagem de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
