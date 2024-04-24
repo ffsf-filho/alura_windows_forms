@@ -52,8 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bibliotecas\ChecaForcaSenha.cs" />
-    <Compile Include="Bibliotecas\ValidaCPF.cs" />
     <Compile Include="Frm_DemonstracaoKey.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,7 +143,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CursoWindowsFormsBiblioteca\CursoWindowsFormsBiblioteca.csproj">
+      <Project>{1ddfe223-c3d2-41de-83aa-0eccfd924190}</Project>
+      <Name>CursoWindowsFormsBiblioteca</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Frm_Principal.ico" />
     <Content Include="Imagens\Frm_DemonstracaoKey.ico" />

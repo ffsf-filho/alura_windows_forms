@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using CursoWindowsFormsBiblioteca.ClassesUteis;
+using System.Drawing;
 using System.Windows.Forms;
-using CursoWindowsForms.Bibliotecas;
 
 namespace CursoWindowsForms
 {

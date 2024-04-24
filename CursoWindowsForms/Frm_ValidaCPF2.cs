@@ -1,4 +1,4 @@
-﻿using CursoWindowsForms.Bibliotecas;
+﻿using CursoWindowsFormsBiblioteca.ClassesUteis;
 using System;
 using System.Windows.Forms;
 
@@ -23,7 +23,7 @@ namespace CursoWindowsForms
             }
             else
             {
-                if(MessageBox.Show("Você deseja realmente validar o CPF?", "Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Você deseja realmente validar o CPF?", "Mensagem de Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ValidaCPF validaCPF = new ValidaCPF();
                     bool cpfValido = validaCPF.Valida(Msk_CPF.Text);

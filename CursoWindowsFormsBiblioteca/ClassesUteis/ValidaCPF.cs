@@ -1,4 +1,4 @@
-﻿namespace CursoWindowsForms.Bibliotecas
+﻿namespace CursoWindowsFormsBiblioteca.ClassesUteis
 {
     public class ValidaCPF
     {

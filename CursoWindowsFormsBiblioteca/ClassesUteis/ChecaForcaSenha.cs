@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace CursoWindowsForms.Bibliotecas
+namespace CursoWindowsFormsBiblioteca.ClassesUteis
 {
     //http://www.macoratti.net/13/01/c_vfs1.htm
     public class ChecaForcaSenha
