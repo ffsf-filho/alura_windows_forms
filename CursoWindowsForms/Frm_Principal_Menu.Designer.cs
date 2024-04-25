@@ -50,7 +50,7 @@
             this.windowaToolStripMenuItem});
             this.Mnu_Principal.Location = new System.Drawing.Point(0, 0);
             this.Mnu_Principal.Name = "Mnu_Principal";
-            this.Mnu_Principal.Size = new System.Drawing.Size(800, 24);
+            this.Mnu_Principal.Size = new System.Drawing.Size(377, 24);
             this.Mnu_Principal.TabIndex = 0;
             this.Mnu_Principal.Text = "menuStrip1";
             // 
@@ -83,6 +83,7 @@
             this.demosntraçãoKeyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.K)));
             this.demosntraçãoKeyToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.demosntraçãoKeyToolStripMenuItem.Text = "Demosntração &Key";
+            this.demosntraçãoKeyToolStripMenuItem.Click += new System.EventHandler(this.demosntraçãoKeyToolStripMenuItem_Click);
             // 
             // helloWorldToolStripMenuItem
             // 
@@ -91,6 +92,7 @@
             this.helloWorldToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
             this.helloWorldToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.helloWorldToolStripMenuItem.Text = "Hello &World";
+            this.helloWorldToolStripMenuItem.Click += new System.EventHandler(this.helloWorldToolStripMenuItem_Click);
             // 
             // mascaraToolStripMenuItem
             // 
@@ -99,6 +101,7 @@
             this.mascaraToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
             this.mascaraToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.mascaraToolStripMenuItem.Text = "&Mascara";
+            this.mascaraToolStripMenuItem.Click += new System.EventHandler(this.mascaraToolStripMenuItem_Click);
             // 
             // valídaCPFToolStripMenuItem
             // 
@@ -107,6 +110,7 @@
             this.valídaCPFToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
             this.valídaCPFToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.valídaCPFToolStripMenuItem.Text = "Valída &CPF";
+            this.valídaCPFToolStripMenuItem.Click += new System.EventHandler(this.valídaCPFToolStripMenuItem_Click);
             // 
             // valídaCPF2ToolStripMenuItem
             // 
@@ -115,6 +119,7 @@
             this.valídaCPF2ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
             this.valídaCPF2ToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.valídaCPF2ToolStripMenuItem.Text = "Valída C&PF2";
+            this.valídaCPF2ToolStripMenuItem.Click += new System.EventHandler(this.valídaCPF2ToolStripMenuItem_Click);
             // 
             // valídaSenhaToolStripMenuItem
             // 
@@ -123,12 +128,14 @@
             this.valídaSenhaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
             this.valídaSenhaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.valídaSenhaToolStripMenuItem.Text = "Valída &Senha";
+            this.valídaSenhaToolStripMenuItem.Click += new System.EventHandler(this.valídaSenhaToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // windowaToolStripMenuItem
             // 
@@ -140,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(377, 181);
             this.Controls.Add(this.Mnu_Principal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.Mnu_Principal;
