@@ -63,10 +63,130 @@ namespace CursoWindowsForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Frm_DemonstracaoKey {
+            get {
+                object obj = ResourceManager.GetObject("Frm_DemonstracaoKey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Frm_DemonstracaoKey1 {
+            get {
+                object obj = ResourceManager.GetObject("Frm_DemonstracaoKey1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Frm_HelloWorld {
+            get {
+                object obj = ResourceManager.GetObject("Frm_HelloWorld", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Frm_HelloWorld1 {
+            get {
+                object obj = ResourceManager.GetObject("Frm_HelloWorld1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Frm_Mascara {
             get {
                 object obj = ResourceManager.GetObject("Frm_Mascara", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Frm_Mascara2 {
+            get {
+                object obj = ResourceManager.GetObject("Frm_Mascara2", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Frm_Principal {
+            get {
+                object obj = ResourceManager.GetObject("Frm_Principal", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Frm_ValidaCPF {
+            get {
+                object obj = ResourceManager.GetObject("Frm_ValidaCPF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Frm_ValidaCPF1 {
+            get {
+                object obj = ResourceManager.GetObject("Frm_ValidaCPF1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Frm_ValidaCPF2 {
+            get {
+                object obj = ResourceManager.GetObject("Frm_ValidaCPF2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Frm_ValidaCPF21 {
+            get {
+                object obj = ResourceManager.GetObject("Frm_ValidaCPF21", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Frm_ValidaSenha {
+            get {
+                object obj = ResourceManager.GetObject("Frm_ValidaSenha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Frm_ValidaSenha1 {
+            get {
+                object obj = ResourceManager.GetObject("Frm_ValidaSenha1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
