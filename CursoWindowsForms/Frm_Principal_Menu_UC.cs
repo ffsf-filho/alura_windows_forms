@@ -15,6 +15,10 @@ namespace CursoWindowsForms
     {
         int ControleHelloWorld = 0;
         int ControleDemostracaoKey = 0;
+        int ControleMascara = 0;
+        int ControleValidaCPF = 0;
+        int ControleValidaCPF2 = 0;
+        int ControleValidaSenha = 0;
 
         public Frm_Principal_Menu_UC()
         {
@@ -53,8 +57,17 @@ namespace CursoWindowsForms
 
         private void mascaraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Mascara f = new Frm_Mascara();
-            f.ShowDialog();
+            ControleMascara += 1;
+            Frm_Mascara_UC U = new Frm_Mascara_UC();
+            U.Dock = DockStyle.Fill;
+
+            TabPage TB = new TabPage();
+            TB.Name = $"Mascara {ControleMascara}";
+            TB.Text = $"Mascara {ControleMascara}";
+            TB.ImageIndex = 2;
+            TB.Controls.Add(U);
+
+            Tbc_Aplicacoes.Controls.Add(TB);
         }
 
         private void valídaCPFToolStripMenuItem_Click(object sender, EventArgs e)
