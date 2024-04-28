@@ -19,6 +19,7 @@ namespace CursoWindowsForms
         int ControleValidaCPF = 0;
         int ControleValidaCPF2 = 0;
         int ControleValidaSenha = 0;
+        int ControleAruivoImagem = 0;
 
         public Frm_Principal_Menu_UC()
         {
@@ -126,6 +127,32 @@ namespace CursoWindowsForms
             {
                 Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.SelectedTab);
             }
+        }
+
+        private void abrirImagemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Db = new OpenFileDialog();
+            Db.InitialDirectory = "D:\\FranciscoFlorentino\\Visual Studio 2022\\alura_windows_forms\\CursoWindowsForms\\Imagens";
+            Db.Filter = "PNG|*.PNG";
+            Db.Title = "Escolha a Imagem";
+
+            if (Db.ShowDialog() == DialogResult.OK)
+            {
+                string nomeArquivoImagem = Db.FileName;
+
+                ControleAruivoImagem += 1;
+                Frm_ArquivoImagem_UC U = new Frm_ArquivoImagem_UC(nomeArquivoImagem);
+                U.Dock = DockStyle.Fill;
+
+                TabPage TB = new TabPage();
+                TB.Name = $"Arquivo Imagem {ControleAruivoImagem}";
+                TB.Text = $"Arquivo Imagem {ControleAruivoImagem}";
+                TB.ImageIndex = 6;
+                TB.Controls.Add(U);
+
+                Tbc_Aplicacoes.Controls.Add(TB);
+            }
+
         }
     }
 }
