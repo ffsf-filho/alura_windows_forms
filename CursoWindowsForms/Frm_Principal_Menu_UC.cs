@@ -1,4 +1,5 @@
-﻿using CursoWindowsForms.Formularios_UC_Curso_1;
+﻿using CursoWindowsForms.Formularios_Curso_1;
+using CursoWindowsForms.Formularios_UC_Curso_1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,11 @@ namespace CursoWindowsForms
         public Frm_Principal_Menu_UC()
         {
             InitializeComponent();
+
+            novoToolStripMenuItem.Enabled = false;
+            apagarAbaToolStripMenuItem.Enabled = false;
+            abrirImagemToolStripMenuItem.Enabled = false;
+            desconectarToolStripMenuItem.Enabled = false;
         }
 
         private void demosntracaoKeyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,7 +158,29 @@ namespace CursoWindowsForms
 
                 Tbc_Aplicacoes.Controls.Add(TB);
             }
+        }
 
+        private void conectarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Login f = new Frm_Login();
+            
+            if(f.ShowDialog() == DialogResult.OK)
+            {
+                novoToolStripMenuItem.Enabled = true;
+                apagarAbaToolStripMenuItem.Enabled = true;
+                abrirImagemToolStripMenuItem.Enabled = true;
+                desconectarToolStripMenuItem.Enabled = true;
+                conectarToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void desconectarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                novoToolStripMenuItem.Enabled = false;
+                apagarAbaToolStripMenuItem.Enabled = false;
+                abrirImagemToolStripMenuItem.Enabled = false;
+                desconectarToolStripMenuItem.Checked = false;
+                conectarToolStripMenuItem.Enabled = true;
         }
     }
 }
