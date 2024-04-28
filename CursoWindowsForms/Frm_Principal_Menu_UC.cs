@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoWindowsForms.Formularios_UC_Curso_1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,26 +14,40 @@ namespace CursoWindowsForms
     public partial class Frm_Principal_Menu_UC : Form
     {
         int ControleHelloWorld = 0;
+        int ControleDemostracaoKey = 0;
 
         public Frm_Principal_Menu_UC()
         {
             InitializeComponent();
         }
-        private void demosntraçãoKeyToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void demosntracaoKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_DemonstracaoKey f = new Frm_DemonstracaoKey();
-            f.ShowDialog();
+            ControleDemostracaoKey += 1;
+            Frm_DemonstracaoKey_UC U = new Frm_DemonstracaoKey_UC();
+            U.Dock = DockStyle.Fill;
+
+            TabPage TB = new TabPage();
+            TB.Name = $"Demostração Key {ControleDemostracaoKey}";
+            TB.Text = $"Demostração Key {ControleDemostracaoKey}";
+            TB.ImageIndex = 0 ;
+            TB.Controls.Add(U);
+
+            Tbc_Aplicacoes.Controls.Add(TB);
         }
 
         private void helloWorldToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ControleHelloWorld += 1;
             Frm_HelloWorld_UC U = new Frm_HelloWorld_UC();
+            U.Dock = DockStyle.Fill;
+
             TabPage TB = new TabPage();
             TB.Name = $"Hello World {ControleHelloWorld}";
             TB.Text = $"Hello World {ControleHelloWorld}";
             TB.ImageIndex = 1;
             TB.Controls.Add(U);
+
             Tbc_Aplicacoes.Controls.Add(TB);
         }
 
