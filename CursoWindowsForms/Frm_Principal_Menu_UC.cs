@@ -94,7 +94,7 @@ namespace CursoWindowsForms
             TabPage TB = new TabPage();
             TB.Name = $"Valida CPF2 {ControleValidaCPF2}";
             TB.Text = $"Valida CPF2 {ControleValidaCPF2}";
-            TB.ImageIndex = 3;
+            TB.ImageIndex = 4;
             TB.Controls.Add(U);
 
             Tbc_Aplicacoes.Controls.Add(TB);
@@ -102,8 +102,17 @@ namespace CursoWindowsForms
 
         private void valídaSenhaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_ValidaSenha f = new Frm_ValidaSenha();
-            f.ShowDialog();
+            ControleValidaSenha += 1;
+            Frm_ValidaSenha_UC U = new Frm_ValidaSenha_UC();
+            U.Dock = DockStyle.Fill;
+
+            TabPage TB = new TabPage();
+            TB.Name = $"Valida Senha {ControleValidaSenha}";
+            TB.Text = $"Valida Senha {ControleValidaSenha}";
+            TB.ImageIndex = 5;
+            TB.Controls.Add(U);
+
+            Tbc_Aplicacoes.Controls.Add(TB);
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
