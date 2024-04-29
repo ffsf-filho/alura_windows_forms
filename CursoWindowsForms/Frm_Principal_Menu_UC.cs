@@ -1,5 +1,6 @@
 ﻿using CursoWindowsForms.Formularios_Curso_1;
 using CursoWindowsForms.Formularios_UC_Curso_1;
+using CursoWindowsFormsBiblioteca.ClassesUteis;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -166,21 +167,42 @@ namespace CursoWindowsForms
             
             if(f.ShowDialog() == DialogResult.OK)
             {
-                novoToolStripMenuItem.Enabled = true;
-                apagarAbaToolStripMenuItem.Enabled = true;
-                abrirImagemToolStripMenuItem.Enabled = true;
-                desconectarToolStripMenuItem.Enabled = true;
-                conectarToolStripMenuItem.Enabled = false;
+                if (Cls_Uteis.ValidaSenhaLogin(f.senha))
+                {
+                    novoToolStripMenuItem.Enabled = true;
+                    apagarAbaToolStripMenuItem.Enabled = true;
+                    abrirImagemToolStripMenuItem.Enabled = true;
+                    desconectarToolStripMenuItem.Enabled = true;
+                    conectarToolStripMenuItem.Enabled = false;
+
+                    MessageBox.Show($"Bem vindo {f.login} !", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Senha inválida {f.login} !", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void desconectarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Frm_Questao Db = new Frm_Questao("icons8_question_96", "Você desejar se desconectar?");
+            
+            if (Db.ShowDialog() == DialogResult.Yes)
+            {
+                Tbc_Aplicacoes.TabPages.Clear();
+
+                //for (int i = Tbc_Aplicacoes.TabPages.Count - 1; i >=0; i--)
+                //{
+                //    Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.TabPages[i]);
+                //}
+
                 novoToolStripMenuItem.Enabled = false;
                 apagarAbaToolStripMenuItem.Enabled = false;
                 abrirImagemToolStripMenuItem.Enabled = false;
-                desconectarToolStripMenuItem.Checked = false;
+                desconectarToolStripMenuItem.Enabled = false;
                 conectarToolStripMenuItem.Enabled = true;
+            }
         }
     }
 }
