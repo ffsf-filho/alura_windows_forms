@@ -18,29 +18,66 @@ namespace CursoWindowsForms.Formularios_Curso_3
                 //MessageBox.Show($"Cliquei com o botão {e.Button.ToString()}, na posição ({e.X},{e.Y})", "Botão Pressionado");
                 ContextMenuStrip ContextMenu = new ContextMenuStrip();
 
-                List<string> menu1 = new List<string>() { "Menu 1.1", "Menu 1.2" };
-                ContextMenu.Items.Add(DesenhaItemMenu("Item do menu 1",menu1));
-                ContextMenu.Items.Add(DesenhaItemMenu("Item do menu 2"));
-                ContextMenu.Items.Add(DesenhaItemMenu("Item do menu 3"));
+                ItemMenu item1 = new ItemMenu("Item do menu 1", "Frm_DemonstracaoKey");
+                List<ItemMenu> menu1DropDown = new List<ItemMenu>
+                {
+                    new ItemMenu("Mascara", "Frm_Mascara"),
+                    new ItemMenu("Menu 1.2")
+                };
+
+                ContextMenu.Items.Add(DesenhaItemMenu(item1,menu1DropDown));
+                
+                ItemMenu item2 = new ItemMenu("Item do menu 2");
+                ContextMenu.Items.Add(DesenhaItemMenu(item2));
+
+                ItemMenu item3 = new ItemMenu("Valida CPF", "Frm_ValidaCPF");
+                ContextMenu.Items.Add(DesenhaItemMenu(item3));
                 
                 ContextMenu.Show(this,new Point(e.X, e.Y));
             }
         }
 
-        private ToolStripMenuItem DesenhaItemMenu(string texto, List<string> listaDropDown = null)
+        private ToolStripMenuItem DesenhaItemMenu(ItemMenu menu, List<ItemMenu> listaDropDown = null)
         {
             ToolStripMenuItem vTooTip = new ToolStripMenuItem();
-            vTooTip.Text = texto;
+            vTooTip.Text = menu.textoMenu;
+
+            if (!string.IsNullOrWhiteSpace(menu.nomeImage))
+            {
+                Image image = (Image)global::CursoWindowsForms.Properties.Resources.ResourceManager.GetObject(menu.nomeImage);
+                vTooTip.Image = image;
+            }
+
 
             if (listaDropDown != null)
             {
-                foreach (string item in listaDropDown)
+                foreach (ItemMenu item in listaDropDown)
                 {
-                    vTooTip.DropDownItems.Add(item);
+                    if (string.IsNullOrWhiteSpace(item.nomeImage))
+                    {
+                        vTooTip.DropDownItems.Add(item.textoMenu);
+                    }
+                    else
+                    {
+                        Image image = (Image)global::CursoWindowsForms.Properties.Resources.ResourceManager.GetObject(item.nomeImage);
+                        vTooTip.DropDownItems.Add(item.textoMenu,image);
+                    }
                 }
             }
 
             return vTooTip;
+        }
+
+        private class ItemMenu
+        {
+            public string textoMenu { get; set; }
+            public string nomeImage { get; set; }
+            
+            public ItemMenu(string nomeMenu, string imagem = null)
+            {
+                this.textoMenu = nomeMenu;
+                this.nomeImage = imagem;
+            }
         }
     }
 }
