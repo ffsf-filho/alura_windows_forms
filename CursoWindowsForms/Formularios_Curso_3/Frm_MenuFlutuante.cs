@@ -13,7 +13,7 @@ namespace CursoWindowsForms.Formularios_Curso_3
         {
             if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show($"Cliquei com o botão {e.Button.ToString()}", "Botão Pressionado");
+                MessageBox.Show($"Cliquei com o botão {e.Button.ToString()}, na posição ({e.X},{e.Y})", "Botão Pressionado");
             }
         }
     }
