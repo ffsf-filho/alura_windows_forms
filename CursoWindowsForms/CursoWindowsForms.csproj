@@ -271,9 +271,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Docs\4.2.xlsx" />
     <None Include="Docs\Apresentação3.4.pptx" />
     <None Include="Docs\Form 3.1.xlsx" />
     <None Include="Docs\Form 3.4.xlsx" />
+    <None Include="Docs\Form 4.3.xlsx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -294,6 +296,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagens\DeleteAll.png" />
+    <Content Include="Imagens\DeleteLeft.png" />
+    <Content Include="Imagens\DeleteRight.png" />
+    <Content Include="Imagens\DeleteTab.png" />
     <Content Include="Imagens\Frm_DemonstracaoKey.ico" />
     <Content Include="Imagens\Frm_DemonstracaoKey.png" />
     <Content Include="Imagens\Frm_HelloWorld.ico" />

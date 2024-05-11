@@ -204,5 +204,96 @@ namespace CursoWindowsForms
                 conectarToolStripMenuItem.Enabled = true;
             }
         }
+
+        private void Tbc_Aplicacoes_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                //MessageBox.Show($"Cliquei com o botão {e.Button.ToString()}, na posição ({e.X},{e.Y})", "Botão Pressionado");
+                ContextMenuStrip ContextMenu = new ContextMenuStrip();
+
+                ItemMenu item1 = new ItemMenu("Apagar a Aba", "DeleteTab");
+                ToolStripMenuItem vToolTipItem1 = DesenhaItemMenu(item1);
+                ContextMenu.Items.Add(vToolTipItem1);
+
+                ItemMenu item2 = new ItemMenu("Apagar Todas as Esquerda", "DeleteLeft");
+                ToolStripMenuItem vToolTipItem2 = DesenhaItemMenu(item2);
+                ContextMenu.Items.Add(vToolTipItem2);
+
+                ItemMenu item3 = new ItemMenu("Apagar Todas as Direita", "DeleteRight");
+                ToolStripMenuItem vToolTipItem3 = DesenhaItemMenu(item3);
+                ContextMenu.Items.Add(vToolTipItem3);
+
+                ItemMenu item4 = new ItemMenu("Apagar Todas menos Esta", "DeleteAll");
+                ToolStripMenuItem vToolTipItem4 = DesenhaItemMenu(item3);
+                ContextMenu.Items.Add(vToolTipItem4);
+
+                ContextMenu.Show(this, new Point(e.X, e.Y));
+                vToolTipItem1.Click += new EventHandler(vToolTipItem1_Click);
+                vToolTipItem2.Click += new EventHandler(vToolTipItem2_Click);
+                vToolTipItem3.Click += new EventHandler(vToolTipItem2_Click);
+                vToolTipItem4.Click += new EventHandler(vToolTipItem4_Click);
+            }
+
+        }
+
+        void vToolTipItem1_Click(object sender1, EventArgs e1)
+        {
+        }
+
+        void vToolTipItem2_Click(object sender1, EventArgs e1)
+        {
+        }
+
+        void vToolTipItem3_Click(object sender1, EventArgs e1)
+        {
+        }
+
+        void vToolTipItem4_Click(object sender1, EventArgs e1)
+        {
+        }
+
+        private ToolStripMenuItem DesenhaItemMenu(ItemMenu menu, List<ItemMenu> listaDropDown = null)
+        {
+            ToolStripMenuItem vTooTip = new ToolStripMenuItem();
+            vTooTip.Text = menu.textoMenu;
+
+            if (!string.IsNullOrWhiteSpace(menu.nomeImage))
+            {
+                Image image = (Image)global::CursoWindowsForms.Properties.Resources.ResourceManager.GetObject(menu.nomeImage);
+                vTooTip.Image = image;
+            }
+
+
+            if (listaDropDown != null)
+            {
+                foreach (ItemMenu item in listaDropDown)
+                {
+                    if (string.IsNullOrWhiteSpace(item.nomeImage))
+                    {
+                        vTooTip.DropDownItems.Add(item.textoMenu);
+                    }
+                    else
+                    {
+                        Image image = (Image)global::CursoWindowsForms.Properties.Resources.ResourceManager.GetObject(item.nomeImage);
+                        vTooTip.DropDownItems.Add(item.textoMenu, image);
+                    }
+                }
+            }
+
+            return vTooTip;
+        }
+
+        private class ItemMenu
+        {
+            public string textoMenu { get; set; }
+            public string nomeImage { get; set; }
+
+            public ItemMenu(string nomeMenu, string imagem = null)
+            {
+                this.textoMenu = nomeMenu;
+                this.nomeImage = imagem;
+            }
+        }
     }
 }
