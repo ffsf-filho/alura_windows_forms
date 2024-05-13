@@ -192,6 +192,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Textos.cs" />
     <EmbeddedResource Include="Formularios_Curso_1\Frm_DemonstracaoKey.resx">
       <DependentUpon>Frm_DemonstracaoKey.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +297,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagens\Cadastros.png" />
     <Content Include="Imagens\DeleteAll.png" />
     <Content Include="Imagens\DeleteLeft.png" />
     <Content Include="Imagens\DeleteRight.png" />
@@ -315,6 +317,8 @@
     <Content Include="Imagens\Frm_ValidaSenha.png" />
     <Content Include="Imagens\icons8-folder-94.png" />
     <Content Include="Imagens\key.png" />
+    <Content Include="Imagens\money.png" />
+    <Content Include="Imagens\user.png" />
     <None Include="Imagens\icons8-question-96.ico" />
     <None Include="Imagens\icons8-question-96.png" />
   </ItemGroup>
