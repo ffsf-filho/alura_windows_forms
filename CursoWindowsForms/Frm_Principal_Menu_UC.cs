@@ -225,13 +225,13 @@ namespace CursoWindowsForms
                 ContextMenu.Items.Add(vToolTipItem3);
 
                 ItemMenu item4 = new ItemMenu("Apagar Todas menos Esta", "DeleteAll");
-                ToolStripMenuItem vToolTipItem4 = DesenhaItemMenu(item3);
+                ToolStripMenuItem vToolTipItem4 = DesenhaItemMenu(item4);
                 ContextMenu.Items.Add(vToolTipItem4);
 
                 ContextMenu.Show(this, new Point(e.X, e.Y));
                 vToolTipItem1.Click += new EventHandler(vToolTipItem1_Click);
                 vToolTipItem2.Click += new EventHandler(vToolTipItem2_Click);
-                vToolTipItem3.Click += new EventHandler(vToolTipItem2_Click);
+                vToolTipItem3.Click += new EventHandler(vToolTipItem3_Click);
                 vToolTipItem4.Click += new EventHandler(vToolTipItem4_Click);
             }
 
@@ -239,18 +239,26 @@ namespace CursoWindowsForms
 
         void vToolTipItem1_Click(object sender1, EventArgs e1)
         {
+            if (!(Tbc_Aplicacoes.SelectedTab == null))
+            {
+                Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.SelectedTab);
+            }
         }
 
         void vToolTipItem2_Click(object sender1, EventArgs e1)
         {
+            ApagaAbaEsquerda(Tbc_Aplicacoes.SelectedIndex);
         }
 
         void vToolTipItem3_Click(object sender1, EventArgs e1)
         {
+            ApagaAbaDireita(Tbc_Aplicacoes.SelectedIndex);
         }
 
         void vToolTipItem4_Click(object sender1, EventArgs e1)
         {
+            ApagaAbaDireita(Tbc_Aplicacoes.SelectedIndex);
+            ApagaAbaEsquerda(Tbc_Aplicacoes.SelectedIndex);
         }
 
         private ToolStripMenuItem DesenhaItemMenu(ItemMenu menu, List<ItemMenu> listaDropDown = null)
@@ -282,6 +290,28 @@ namespace CursoWindowsForms
             }
 
             return vTooTip;
+        }
+
+        private void ApagaAbaDireita(int ItemSelecionado)
+        {
+            if (!(Tbc_Aplicacoes.SelectedTab == null))
+            {
+                for (int i = Tbc_Aplicacoes.TabCount - 1; i > ItemSelecionado; i--)
+                {
+                    Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.TabPages[i]);
+                }
+            }
+        }
+
+        private void ApagaAbaEsquerda(int ItemSelecionado)
+        {
+            if (!(Tbc_Aplicacoes.SelectedTab == null))
+            {
+                for (int i = ItemSelecionado - 1; i >= 0; i--)
+                {
+                    Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.TabPages[i]);
+                }
+            }
         }
 
         private class ItemMenu
