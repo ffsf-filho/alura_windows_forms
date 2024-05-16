@@ -15,12 +15,17 @@ namespace CursoWindowsForms
 		public Frm_Cadastro_Cliente_UC()
 		{
 			InitializeComponent();
-			
+
 			//configura o nome dos labels
+			Grp_Codigo.Text = "Código";
+			Grp_DadosPessoais.Text = "Dados Pessoais";
+			Grp_Endereco.Text = "Endereço";
+			Grp_Outros.Text = "Outros";
 			Lbl_Bairro.Text = "Bairro";
 			Lbl_CEP.Text = "CEP";
 			Lbl_Complemento.Text = "Complemento";
 			Lbl_CPF.Text = "CPF";
+			Lbl_Cidade.Text = "Cidade";
 			Lbl_Estado.Text = "Estado";
 			Lbl_Genero.Text = "Genero";
 			Lbl_Logradouro.Text = "Logradouro";
