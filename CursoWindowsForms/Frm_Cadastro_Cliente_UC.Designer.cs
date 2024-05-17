@@ -39,7 +39,6 @@
 			this.Lbl_Bairro = new System.Windows.Forms.Label();
 			this.Txt_Bairro = new System.Windows.Forms.TextBox();
 			this.Lbl_Estado = new System.Windows.Forms.Label();
-			this.Txt_Estado = new System.Windows.Forms.TextBox();
 			this.Lbl_Telefone = new System.Windows.Forms.Label();
 			this.Txt_Telefone = new System.Windows.Forms.TextBox();
 			this.Lbl_Profissao = new System.Windows.Forms.Label();
@@ -65,6 +64,7 @@
 			this.Rdb_Masculino = new System.Windows.Forms.RadioButton();
 			this.Rdb_Feminino = new System.Windows.Forms.RadioButton();
 			this.Rdb_Indefinido = new System.Windows.Forms.RadioButton();
+			this.Cmb_Estados = new System.Windows.Forms.ComboBox();
 			this.Grp_Codigo.SuspendLayout();
 			this.Grp_DadosPessoais.SuspendLayout();
 			this.Grp_Endereco.SuspendLayout();
@@ -162,20 +162,11 @@
 			// Lbl_Estado
 			// 
 			this.Lbl_Estado.AutoSize = true;
-			this.Lbl_Estado.Location = new System.Drawing.Point(640, 104);
+			this.Lbl_Estado.Location = new System.Drawing.Point(581, 105);
 			this.Lbl_Estado.Name = "Lbl_Estado";
 			this.Lbl_Estado.Size = new System.Drawing.Size(35, 13);
 			this.Lbl_Estado.TabIndex = 12;
 			this.Lbl_Estado.Text = "label1";
-			// 
-			// Txt_Estado
-			// 
-			this.Txt_Estado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.Txt_Estado.Location = new System.Drawing.Point(643, 120);
-			this.Txt_Estado.Name = "Txt_Estado";
-			this.Txt_Estado.Size = new System.Drawing.Size(134, 20);
-			this.Txt_Estado.TabIndex = 12;
 			// 
 			// Lbl_Telefone
 			// 
@@ -321,6 +312,7 @@
 			this.Grp_Endereco.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.Grp_Endereco.Controls.Add(this.Cmb_Estados);
 			this.Grp_Endereco.Controls.Add(this.Txt_Cidade);
 			this.Grp_Endereco.Controls.Add(this.Lbl_Cidade);
 			this.Grp_Endereco.Controls.Add(this.Txt_CEP);
@@ -332,7 +324,6 @@
 			this.Grp_Endereco.Controls.Add(this.Lbl_Bairro);
 			this.Grp_Endereco.Controls.Add(this.Txt_Bairro);
 			this.Grp_Endereco.Controls.Add(this.Lbl_Estado);
-			this.Grp_Endereco.Controls.Add(this.Txt_Estado);
 			this.Grp_Endereco.Location = new System.Drawing.Point(10, 268);
 			this.Grp_Endereco.Name = "Grp_Endereco";
 			this.Grp_Endereco.Size = new System.Drawing.Size(783, 149);
@@ -344,7 +335,7 @@
 			// 
 			this.Txt_Cidade.Location = new System.Drawing.Point(12, 120);
 			this.Txt_Cidade.Name = "Txt_Cidade";
-			this.Txt_Cidade.Size = new System.Drawing.Size(625, 20);
+			this.Txt_Cidade.Size = new System.Drawing.Size(566, 20);
 			this.Txt_Cidade.TabIndex = 11;
 			// 
 			// Lbl_Cidade
@@ -441,6 +432,16 @@
 			this.Rdb_Indefinido.Text = "radioButton3";
 			this.Rdb_Indefinido.UseVisualStyleBackColor = true;
 			// 
+			// Cmb_Estados
+			// 
+			this.Cmb_Estados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.Cmb_Estados.FormattingEnabled = true;
+			this.Cmb_Estados.Location = new System.Drawing.Point(584, 121);
+			this.Cmb_Estados.Name = "Cmb_Estados";
+			this.Cmb_Estados.Size = new System.Drawing.Size(193, 21);
+			this.Cmb_Estados.TabIndex = 27;
+			// 
 			// Frm_Cadastro_Cliente_UC
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,7 +481,6 @@
 		private System.Windows.Forms.Label Lbl_Bairro;
 		private System.Windows.Forms.TextBox Txt_Bairro;
 		private System.Windows.Forms.Label Lbl_Estado;
-		private System.Windows.Forms.TextBox Txt_Estado;
 		private System.Windows.Forms.Label Lbl_Telefone;
 		private System.Windows.Forms.TextBox Txt_Telefone;
 		private System.Windows.Forms.Label Lbl_Profissao;
@@ -506,5 +506,6 @@
 		private System.Windows.Forms.RadioButton Rdb_Indefinido;
 		private System.Windows.Forms.RadioButton Rdb_Feminino;
 		private System.Windows.Forms.RadioButton Rdb_Masculino;
+		private System.Windows.Forms.ComboBox Cmb_Estados;
 	}
 }
