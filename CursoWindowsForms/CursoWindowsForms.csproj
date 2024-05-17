@@ -311,6 +311,7 @@
     <Content Include="Imagens\DeleteLeft.png" />
     <Content Include="Imagens\DeleteRight.png" />
     <Content Include="Imagens\DeleteTab.png" />
+    <Content Include="Imagens\ExcluirBarra.png" />
     <Content Include="Imagens\Frm_DemonstracaoKey.ico" />
     <Content Include="Imagens\Frm_DemonstracaoKey.png" />
     <Content Include="Imagens\Frm_HelloWorld.ico" />
@@ -326,11 +327,14 @@
     <Content Include="Imagens\Frm_ValidaSenha.png" />
     <Content Include="Imagens\icons8-folder-94.png" />
     <Content Include="Imagens\key.png" />
+    <Content Include="Imagens\LimparBarra.png" />
     <Content Include="Imagens\money.png" />
     <Content Include="Imagens\user.png" />
     <None Include="Imagens\icons8-question-96.ico" />
     <None Include="Imagens\icons8-question-96.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Formularios_Curso_4\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
