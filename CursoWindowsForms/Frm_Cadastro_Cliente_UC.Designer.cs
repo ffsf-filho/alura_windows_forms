@@ -36,8 +36,6 @@
 			this.Txt_NomePai = new System.Windows.Forms.TextBox();
 			this.Lbl_NomeMae = new System.Windows.Forms.Label();
 			this.Txt_NomeMae = new System.Windows.Forms.TextBox();
-			this.Lbl_Genero = new System.Windows.Forms.Label();
-			this.Txt_Genero = new System.Windows.Forms.TextBox();
 			this.Lbl_Bairro = new System.Windows.Forms.Label();
 			this.Txt_Bairro = new System.Windows.Forms.TextBox();
 			this.Lbl_Estado = new System.Windows.Forms.Label();
@@ -63,17 +61,22 @@
 			this.Grp_Outros = new System.Windows.Forms.GroupBox();
 			this.Grp_TemPai = new System.Windows.Forms.GroupBox();
 			this.Chk_TemPai = new System.Windows.Forms.CheckBox();
+			this.Grp_Genero = new System.Windows.Forms.GroupBox();
+			this.Rdb_Masculino = new System.Windows.Forms.RadioButton();
+			this.Rdb_Feminino = new System.Windows.Forms.RadioButton();
+			this.Rdb_Indefinido = new System.Windows.Forms.RadioButton();
 			this.Grp_Codigo.SuspendLayout();
 			this.Grp_DadosPessoais.SuspendLayout();
 			this.Grp_Endereco.SuspendLayout();
 			this.Grp_Outros.SuspendLayout();
 			this.Grp_TemPai.SuspendLayout();
+			this.Grp_Genero.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Lbl_CPF
 			// 
 			this.Lbl_CPF.AutoSize = true;
-			this.Lbl_CPF.Location = new System.Drawing.Point(283, 133);
+			this.Lbl_CPF.Location = new System.Drawing.Point(475, 54);
 			this.Lbl_CPF.Name = "Lbl_CPF";
 			this.Lbl_CPF.Size = new System.Drawing.Size(35, 13);
 			this.Lbl_CPF.TabIndex = 0;
@@ -83,9 +86,9 @@
 			// 
 			this.Txt_CPF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.Txt_CPF.Location = new System.Drawing.Point(283, 149);
+			this.Txt_CPF.Location = new System.Drawing.Point(475, 70);
 			this.Txt_CPF.Name = "Txt_CPF";
-			this.Txt_CPF.Size = new System.Drawing.Size(494, 20);
+			this.Txt_CPF.Size = new System.Drawing.Size(302, 20);
 			this.Txt_CPF.TabIndex = 6;
 			// 
 			// Lbl_NomeCliente
@@ -109,7 +112,7 @@
 			// Lbl_NomePai
 			// 
 			this.Lbl_NomePai.AutoSize = true;
-			this.Lbl_NomePai.Location = new System.Drawing.Point(6, 55);
+			this.Lbl_NomePai.Location = new System.Drawing.Point(6, 93);
 			this.Lbl_NomePai.Name = "Lbl_NomePai";
 			this.Lbl_NomePai.Size = new System.Drawing.Size(35, 13);
 			this.Lbl_NomePai.TabIndex = 4;
@@ -117,9 +120,7 @@
 			// 
 			// Txt_NomePai
 			// 
-			this.Txt_NomePai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.Txt_NomePai.Location = new System.Drawing.Point(6, 71);
+			this.Txt_NomePai.Location = new System.Drawing.Point(6, 109);
 			this.Txt_NomePai.Name = "Txt_NomePai";
 			this.Txt_NomePai.Size = new System.Drawing.Size(454, 20);
 			this.Txt_NomePai.TabIndex = 3;
@@ -127,7 +128,7 @@
 			// Lbl_NomeMae
 			// 
 			this.Lbl_NomeMae.AutoSize = true;
-			this.Lbl_NomeMae.Location = new System.Drawing.Point(6, 93);
+			this.Lbl_NomeMae.Location = new System.Drawing.Point(6, 54);
 			this.Lbl_NomeMae.Name = "Lbl_NomeMae";
 			this.Lbl_NomeMae.Size = new System.Drawing.Size(35, 13);
 			this.Lbl_NomeMae.TabIndex = 6;
@@ -135,28 +136,10 @@
 			// 
 			// Txt_NomeMae
 			// 
-			this.Txt_NomeMae.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.Txt_NomeMae.Location = new System.Drawing.Point(6, 109);
+			this.Txt_NomeMae.Location = new System.Drawing.Point(6, 70);
 			this.Txt_NomeMae.Name = "Txt_NomeMae";
 			this.Txt_NomeMae.Size = new System.Drawing.Size(454, 20);
 			this.Txt_NomeMae.TabIndex = 4;
-			// 
-			// Lbl_Genero
-			// 
-			this.Lbl_Genero.AutoSize = true;
-			this.Lbl_Genero.Location = new System.Drawing.Point(6, 133);
-			this.Lbl_Genero.Name = "Lbl_Genero";
-			this.Lbl_Genero.Size = new System.Drawing.Size(35, 13);
-			this.Lbl_Genero.TabIndex = 8;
-			this.Lbl_Genero.Text = "label1";
-			// 
-			// Txt_Genero
-			// 
-			this.Txt_Genero.Location = new System.Drawing.Point(6, 149);
-			this.Txt_Genero.Name = "Txt_Genero";
-			this.Txt_Genero.Size = new System.Drawing.Size(271, 20);
-			this.Txt_Genero.TabIndex = 5;
 			// 
 			// Lbl_Bairro
 			// 
@@ -316,20 +299,19 @@
 			this.Grp_DadosPessoais.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.Grp_DadosPessoais.Controls.Add(this.Grp_Genero);
 			this.Grp_DadosPessoais.Controls.Add(this.Grp_TemPai);
 			this.Grp_DadosPessoais.Controls.Add(this.Lbl_NomeCliente);
 			this.Grp_DadosPessoais.Controls.Add(this.Txt_NomeCliente);
 			this.Grp_DadosPessoais.Controls.Add(this.Lbl_NomePai);
 			this.Grp_DadosPessoais.Controls.Add(this.Txt_NomePai);
-			this.Grp_DadosPessoais.Controls.Add(this.Txt_Genero);
 			this.Grp_DadosPessoais.Controls.Add(this.Lbl_CPF);
 			this.Grp_DadosPessoais.Controls.Add(this.Txt_CPF);
 			this.Grp_DadosPessoais.Controls.Add(this.Lbl_NomeMae);
 			this.Grp_DadosPessoais.Controls.Add(this.Txt_NomeMae);
-			this.Grp_DadosPessoais.Controls.Add(this.Lbl_Genero);
-			this.Grp_DadosPessoais.Location = new System.Drawing.Point(10, 76);
+			this.Grp_DadosPessoais.Location = new System.Drawing.Point(10, 74);
 			this.Grp_DadosPessoais.Name = "Grp_DadosPessoais";
-			this.Grp_DadosPessoais.Size = new System.Drawing.Size(783, 209);
+			this.Grp_DadosPessoais.Size = new System.Drawing.Size(783, 188);
 			this.Grp_DadosPessoais.TabIndex = 29;
 			this.Grp_DadosPessoais.TabStop = false;
 			this.Grp_DadosPessoais.Text = "groupBox1";
@@ -351,9 +333,9 @@
 			this.Grp_Endereco.Controls.Add(this.Txt_Bairro);
 			this.Grp_Endereco.Controls.Add(this.Lbl_Estado);
 			this.Grp_Endereco.Controls.Add(this.Txt_Estado);
-			this.Grp_Endereco.Location = new System.Drawing.Point(10, 270);
+			this.Grp_Endereco.Location = new System.Drawing.Point(10, 268);
 			this.Grp_Endereco.Name = "Grp_Endereco";
-			this.Grp_Endereco.Size = new System.Drawing.Size(783, 183);
+			this.Grp_Endereco.Size = new System.Drawing.Size(783, 149);
 			this.Grp_Endereco.TabIndex = 30;
 			this.Grp_Endereco.TabStop = false;
 			this.Grp_Endereco.Text = "groupBox1";
@@ -394,25 +376,70 @@
 			// 
 			// Grp_TemPai
 			// 
-			this.Grp_TemPai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.Grp_TemPai.Controls.Add(this.Chk_TemPai);
-			this.Grp_TemPai.Location = new System.Drawing.Point(475, 71);
+			this.Grp_TemPai.Location = new System.Drawing.Point(6, 138);
 			this.Grp_TemPai.Name = "Grp_TemPai";
-			this.Grp_TemPai.Size = new System.Drawing.Size(302, 58);
+			this.Grp_TemPai.Size = new System.Drawing.Size(127, 36);
 			this.Grp_TemPai.TabIndex = 9;
 			this.Grp_TemPai.TabStop = false;
 			// 
 			// Chk_TemPai
 			// 
 			this.Chk_TemPai.AutoSize = true;
-			this.Chk_TemPai.Location = new System.Drawing.Point(6, 22);
+			this.Chk_TemPai.Location = new System.Drawing.Point(6, 12);
 			this.Chk_TemPai.Name = "Chk_TemPai";
 			this.Chk_TemPai.Size = new System.Drawing.Size(80, 17);
 			this.Chk_TemPai.TabIndex = 0;
 			this.Chk_TemPai.Text = "checkBox1";
 			this.Chk_TemPai.UseVisualStyleBackColor = true;
 			this.Chk_TemPai.CheckedChanged += new System.EventHandler(this.Chk_TemPai_CheckedChanged);
+			// 
+			// Grp_Genero
+			// 
+			this.Grp_Genero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.Grp_Genero.Controls.Add(this.Rdb_Indefinido);
+			this.Grp_Genero.Controls.Add(this.Rdb_Feminino);
+			this.Grp_Genero.Controls.Add(this.Rdb_Masculino);
+			this.Grp_Genero.Location = new System.Drawing.Point(475, 109);
+			this.Grp_Genero.Name = "Grp_Genero";
+			this.Grp_Genero.Size = new System.Drawing.Size(302, 65);
+			this.Grp_Genero.TabIndex = 10;
+			this.Grp_Genero.TabStop = false;
+			this.Grp_Genero.Text = "groupBox1";
+			// 
+			// Rdb_Masculino
+			// 
+			this.Rdb_Masculino.AutoSize = true;
+			this.Rdb_Masculino.Location = new System.Drawing.Point(6, 40);
+			this.Rdb_Masculino.Name = "Rdb_Masculino";
+			this.Rdb_Masculino.Size = new System.Drawing.Size(85, 17);
+			this.Rdb_Masculino.TabIndex = 0;
+			this.Rdb_Masculino.TabStop = true;
+			this.Rdb_Masculino.Text = "radioButton1";
+			this.Rdb_Masculino.UseVisualStyleBackColor = true;
+			// 
+			// Rdb_Feminino
+			// 
+			this.Rdb_Feminino.AutoSize = true;
+			this.Rdb_Feminino.Location = new System.Drawing.Point(102, 41);
+			this.Rdb_Feminino.Name = "Rdb_Feminino";
+			this.Rdb_Feminino.Size = new System.Drawing.Size(85, 17);
+			this.Rdb_Feminino.TabIndex = 1;
+			this.Rdb_Feminino.TabStop = true;
+			this.Rdb_Feminino.Text = "radioButton2";
+			this.Rdb_Feminino.UseVisualStyleBackColor = true;
+			// 
+			// Rdb_Indefinido
+			// 
+			this.Rdb_Indefinido.AutoSize = true;
+			this.Rdb_Indefinido.Location = new System.Drawing.Point(200, 39);
+			this.Rdb_Indefinido.Name = "Rdb_Indefinido";
+			this.Rdb_Indefinido.Size = new System.Drawing.Size(85, 17);
+			this.Rdb_Indefinido.TabIndex = 2;
+			this.Rdb_Indefinido.TabStop = true;
+			this.Rdb_Indefinido.Text = "radioButton3";
+			this.Rdb_Indefinido.UseVisualStyleBackColor = true;
 			// 
 			// Frm_Cadastro_Cliente_UC
 			// 
@@ -434,6 +461,8 @@
 			this.Grp_Outros.PerformLayout();
 			this.Grp_TemPai.ResumeLayout(false);
 			this.Grp_TemPai.PerformLayout();
+			this.Grp_Genero.ResumeLayout(false);
+			this.Grp_Genero.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -448,8 +477,6 @@
 		private System.Windows.Forms.TextBox Txt_NomePai;
 		private System.Windows.Forms.Label Lbl_NomeMae;
 		private System.Windows.Forms.TextBox Txt_NomeMae;
-		private System.Windows.Forms.Label Lbl_Genero;
-		private System.Windows.Forms.TextBox Txt_Genero;
 		private System.Windows.Forms.Label Lbl_Bairro;
 		private System.Windows.Forms.TextBox Txt_Bairro;
 		private System.Windows.Forms.Label Lbl_Estado;
@@ -475,5 +502,9 @@
 		private System.Windows.Forms.Label Lbl_Cidade;
 		private System.Windows.Forms.GroupBox Grp_TemPai;
 		private System.Windows.Forms.CheckBox Chk_TemPai;
+		private System.Windows.Forms.GroupBox Grp_Genero;
+		private System.Windows.Forms.RadioButton Rdb_Indefinido;
+		private System.Windows.Forms.RadioButton Rdb_Feminino;
+		private System.Windows.Forms.RadioButton Rdb_Masculino;
 	}
 }
