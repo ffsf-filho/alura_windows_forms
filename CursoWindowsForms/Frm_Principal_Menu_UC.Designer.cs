@@ -228,7 +228,7 @@
 			this.Tbc_Aplicacoes.Location = new System.Drawing.Point(0, 24);
 			this.Tbc_Aplicacoes.Name = "Tbc_Aplicacoes";
 			this.Tbc_Aplicacoes.SelectedIndex = 0;
-			this.Tbc_Aplicacoes.Size = new System.Drawing.Size(800, 557);
+			this.Tbc_Aplicacoes.Size = new System.Drawing.Size(800, 587);
 			this.Tbc_Aplicacoes.TabIndex = 1;
 			this.Tbc_Aplicacoes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tbc_Aplicacoes_MouseDown);
 			// 
@@ -249,7 +249,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 581);
+			this.ClientSize = new System.Drawing.Size(800, 611);
 			this.Controls.Add(this.Tbc_Aplicacoes);
 			this.Controls.Add(this.Mnu_Principal);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

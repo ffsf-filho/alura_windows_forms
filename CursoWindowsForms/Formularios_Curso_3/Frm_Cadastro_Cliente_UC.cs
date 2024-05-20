@@ -68,6 +68,11 @@ namespace CursoWindowsForms
 			Cmb_Estados.Items.Add("São Paulo(SP)");
 			Cmb_Estados.Items.Add("Sergipe(SE)");
 			Cmb_Estados.Items.Add("Tocantins(TO)");
+			Tls_Principal.Items[0].ToolTipText = "Incluir na base de dados um novo Cliente";
+			Tls_Principal.Items[1].ToolTipText = "Capturar um Cliente já cadastrado na base";
+			Tls_Principal.Items[2].ToolTipText = "Atualize o Cliente já existente";
+			Tls_Principal.Items[3].ToolTipText = "Apaga o Cliente selecionado";
+			Tls_Principal.Items[4].ToolTipText = "Limpa dados da tela de entrada de dados";
 		}
 
 		private void Chk_TemPai_CheckedChanged(object sender, EventArgs e)
@@ -77,6 +82,31 @@ namespace CursoWindowsForms
 			{
 				Txt_NomePai.Text = "";
 			}
+		}
+
+		private void NovoToolStripButton_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Efetuei um click sobre o botão Novo");
+		}
+
+		private void AbrirToolStripButton_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Efetuei um click sobre o botão Abrir");
+		}
+
+		private void SalvarToolStripButton_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Efetuei um click sobre o botão Salvar");
+		}
+
+		private void ApagatoolStripButton_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Efetuei um click sobre o botão Excluir");
+		}
+
+		private void LimpartoolStripButton_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Efetuei um click sobre o botão Limpar");
 		}
 	}
 }
