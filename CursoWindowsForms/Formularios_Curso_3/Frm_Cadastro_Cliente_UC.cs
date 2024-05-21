@@ -1,13 +1,7 @@
 ﻿using CursoWindowsFormsBiblioteca.Classes;
+using Microsoft.VisualBasic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CursoWindowsForms
@@ -79,7 +73,7 @@ namespace CursoWindowsForms
 
 		private void Chk_TemPai_CheckedChanged(object sender, EventArgs e)
 		{
-			Txt_NomePai.Enabled = !Txt_NomePai.Enabled;
+			Txt_NomePai.Enabled = Chk_TemPai.Checked ? false: true ;
 			if (!Txt_NomePai.Enabled && Txt_NomePai.Text.Length > 0)
 			{
 				Txt_NomePai.Text = "";
@@ -91,6 +85,7 @@ namespace CursoWindowsForms
 			try
 			{
 				Cliente.Unit cliente = new Cliente.Unit();
+				cliente = LeituraFormulario();
 				cliente.Id = Txt_CodigoCliente.Text;
 				cliente.ValidaClasse();
 				MessageBox.Show("Classe foi inicializada sem erros.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,6 +114,76 @@ namespace CursoWindowsForms
 		private void LimpartoolStripButton_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("Efetuei um click sobre o botão Limpar");
+		}
+
+		private Cliente.Unit LeituraFormulario()
+		{
+			Cliente.Unit cliente = new Cliente.Unit();
+
+			cliente.Id = Txt_CodigoCliente.Text;
+			cliente.Nome = Txt_NomeCliente.Text;
+			cliente.NomePai = Txt_NomePai.Text;
+
+			if (Chk_TemPai.Checked || string.IsNullOrWhiteSpace(Txt_NomePai.Text))
+			{
+				cliente.TemPai = true;
+			}
+			else
+			{
+				cliente.TemPai = false;
+			}
+
+			cliente.NomeMae = Txt_NomeMae.Text;
+
+			if (Rdb_Masculino.Checked)
+			{
+				cliente.Genero = 0;
+			}
+
+			if (Rdb_Feminino.Checked)
+			{
+				cliente.Genero = 1;
+			}
+
+			if (Rdb_Indefinido.Checked)
+			{
+				cliente.Genero = 3;
+			}
+
+			cliente.Cpf = Txt_CPF.Text;
+			cliente.Cep = Txt_CEP.Text;
+			cliente.Logradouro = Txt_Logradouro.Text;
+			cliente.Complemento = Txt_Complemento.Text;
+			cliente.Cidade = Txt_Cidade.Text;
+			cliente.Bairro = Txt_Bairro.Text;
+
+			if (Cmb_Estados.SelectedIndex < 0)
+			{
+				cliente.Estado = "";
+			}
+			else
+			{
+				cliente.Estado = Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString();
+			}
+
+			cliente.Telefone = Txt_Telefone.Text;
+			cliente.Profissao = Txt_Profissao.Text;
+
+			if (Information.IsNumeric(Txt_RendaFamiliar.Text))
+			{
+				double vRenda = Convert.ToDouble(Txt_RendaFamiliar.Text);
+
+				if (vRenda < 0) 
+				{
+					cliente.RendaFamiliar = 0;
+				}
+				else
+				{
+					cliente.RendaFamiliar = vRenda;
+				}
+			}
+
+			return cliente;
 		}
 	}
 }
