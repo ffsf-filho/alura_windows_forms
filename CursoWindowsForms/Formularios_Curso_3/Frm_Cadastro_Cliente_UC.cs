@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CursoWindowsFormsBiblioteca.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -86,7 +88,17 @@ namespace CursoWindowsForms
 
 		private void NovoToolStripButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Efetuei um click sobre o botão Novo");
+			try
+			{
+				Cliente.Unit cliente = new Cliente.Unit();
+				cliente.Id = Txt_CodigoCliente.Text;
+				cliente.ValidaClasse();
+				MessageBox.Show("Classe foi inicializada sem erros.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			catch (ValidationException ex)
+			{
+				MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 
 		private void AbrirToolStripButton_Click(object sender, EventArgs e)
