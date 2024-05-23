@@ -308,6 +308,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Docs\BuscaCEP.txt" />
     <Content Include="Docs\Valida.txt" />
     <Content Include="Imagens\Cadastros.png" />
     <Content Include="Imagens\DeleteAll.png" />

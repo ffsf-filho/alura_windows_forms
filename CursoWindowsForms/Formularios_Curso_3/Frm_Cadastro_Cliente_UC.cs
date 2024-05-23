@@ -1,4 +1,5 @@
 ﻿using CursoWindowsFormsBiblioteca.Classes;
+using CursoWindowsFormsBiblioteca.ClassesUteis;
 using Microsoft.VisualBasic;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -84,6 +85,10 @@ namespace CursoWindowsForms
 		{
 			try
 			{
+				var vJSON = Cls_Uteis.GeraJSONCEP("20261140");
+				Cep.Unit cep = new Cep.Unit();
+				cep = Cep.DesSerializedClassUnit(vJSON);
+
 				Cliente.Unit cliente = new Cliente.Unit();
 				cliente = LeituraFormulario();
 				cliente.Id = Txt_CodigoCliente.Text;
