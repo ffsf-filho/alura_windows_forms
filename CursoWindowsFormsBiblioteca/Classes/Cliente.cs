@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CursoWindowsFormsBiblioteca.ClassesUteis;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
@@ -24,7 +26,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
 			[StringLength(50, ErrorMessage = "O Nome da Mãe deve ter no máximo 50 Caracteres.")]
 			public string NomeMae { get; set; }
 
-            public bool TemPai { get; set; }
+            public bool NaoTemPai { get; set; }
 
 			[Required(ErrorMessage = "CPF é obrigatório.")]
 			[RegularExpression("([0-9]+)", ErrorMessage = "O CPF somente aceita valores númericos.")]
@@ -83,6 +85,29 @@ namespace CursoWindowsFormsBiblioteca.Classes
 						sbrErrors.AppendLine(validationResult.ErrorMessage);
 					}
 					throw new ValidationException(sbrErrors.ToString());
+				}
+			}
+
+			public void ValidaComplemento()
+			{
+				if (this.NomePai == this.NomeMae) 
+				{
+					throw new Exception("O nome do Pai e Mãe não podem ser iguais.");
+				}
+
+				if (String.IsNullOrWhiteSpace(this.NomePai))
+				{
+					if(this.NaoTemPai == false)
+					{
+						throw new Exception("O nome do Pai não pode estar vazio quando a propriedade Pai Desconhecido não estiver marcado.");
+					}
+				}
+
+				ValidaCPF validaCPF = new ValidaCPF();
+
+				if (!validaCPF.Valida(this.Cpf))
+				{
+					throw new Exception("CPF Inválido.");
 				}
 			}
         }

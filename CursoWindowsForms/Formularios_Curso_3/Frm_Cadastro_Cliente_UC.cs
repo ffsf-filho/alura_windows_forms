@@ -88,9 +88,14 @@ namespace CursoWindowsForms
 				cliente = LeituraFormulario();
 				cliente.Id = Txt_CodigoCliente.Text;
 				cliente.ValidaClasse();
+				cliente.ValidaComplemento();
 				MessageBox.Show("Classe foi inicializada sem erros.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (ValidationException ex)
+			{
+				MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
@@ -124,13 +129,13 @@ namespace CursoWindowsForms
 			cliente.Nome = Txt_NomeCliente.Text;
 			cliente.NomePai = Txt_NomePai.Text;
 
-			if (Chk_TemPai.Checked || string.IsNullOrWhiteSpace(Txt_NomePai.Text))
+			if (Chk_TemPai.Checked || !string.IsNullOrWhiteSpace(Txt_NomePai.Text))
 			{
-				cliente.TemPai = true;
+				cliente.NaoTemPai = true;
 			}
 			else
 			{
-				cliente.TemPai = false;
+				cliente.NaoTemPai = false;
 			}
 
 			cliente.NomeMae = Txt_NomeMae.Text;
