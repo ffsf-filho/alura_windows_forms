@@ -34,7 +34,7 @@ namespace CursoWindowsFormsBiblioteca.ClassesUteis
 			do
 			{
 				cont = stream.Read(buffer, 0, buffer.Length);
-				temp = Encoding.Default.GetString(buffer, 0, cont).Trim();
+				temp = Encoding.UTF8.GetString(buffer, 0, cont).Trim();
 				sb.Append(temp);
 
 			} while (cont > 0);
