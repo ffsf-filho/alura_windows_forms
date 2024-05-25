@@ -50,6 +50,7 @@
     <Compile Include="ClassesUteis\ValidaCPF.cs" />
     <Compile Include="Classes\Cep.cs" />
     <Compile Include="Classes\Cliente.cs" />
+    <Compile Include="Databases\Fichario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

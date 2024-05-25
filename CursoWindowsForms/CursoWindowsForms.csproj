@@ -337,6 +337,8 @@
     <None Include="Imagens\icons8-question-96.ico" />
     <None Include="Imagens\icons8-question-96.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Fichario\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
