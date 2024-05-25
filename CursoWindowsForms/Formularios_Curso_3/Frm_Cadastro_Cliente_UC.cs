@@ -1,4 +1,5 @@
-﻿using CursoWindowsFormsBiblioteca.Classes;
+﻿using CursoWindowsForms.Formularios_Curso_1;
+using CursoWindowsFormsBiblioteca.Classes;
 using CursoWindowsFormsBiblioteca.ClassesUteis;
 using CursoWindowsFormsBiblioteca.Databases;
 using Microsoft.VisualBasic;
@@ -76,8 +77,6 @@ namespace CursoWindowsForms
 			Tls_Principal.Items[4].ToolTipText = "Limpa dados da tela de entrada de dados";
 
 			LimparFormulario();
-
-			Txt_CodigoCliente.Focus();
 		}
 
 		private void LimparFormulario()
@@ -100,6 +99,8 @@ namespace CursoWindowsForms
 			Rdb_Masculino.Checked = false;
 			Rdb_Feminino.Checked = false;
 			Rdb_Indefinido.Checked = false;
+
+			Txt_CodigoCliente.Focus();
 		}
 
 		private void EscreveFormulario(Cliente.Unit dadosDoCliente)
@@ -224,9 +225,18 @@ namespace CursoWindowsForms
 				if (fichario.status)
 				{
 					string clienteJSON = fichario.Buscar(Txt_CodigoCliente.Text);
-					Cliente.Unit dadosDoCliente = new Cliente.Unit();
-					dadosDoCliente = Cliente.DesSerializedClassUnit(clienteJSON);
-					EscreveFormulario(dadosDoCliente);
+
+					if (String.IsNullOrWhiteSpace(clienteJSON))
+					{
+						MessageBox.Show($"Erro: Não existe o Cliente {Txt_CodigoCliente.Text}. ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						Txt_CodigoCliente.Focus();
+					}
+					else
+					{
+						Cliente.Unit dadosDoCliente = new Cliente.Unit();
+						dadosDoCliente = Cliente.DesSerializedClassUnit(clienteJSON);
+						EscreveFormulario(dadosDoCliente);
+					}
 				}
 				else
 				{
@@ -242,7 +252,52 @@ namespace CursoWindowsForms
 
 		private void ApagatoolStripButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Efetuei um click sobre o botão Excluir");
+			if (String.IsNullOrWhiteSpace(Txt_CodigoCliente.Text))
+			{
+				MessageBox.Show("Código do Cliente vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Txt_CodigoCliente.Focus();
+			}
+			else
+			{
+				Fichario fichario = new Fichario(_diretorio);
+
+				if (fichario.status)
+				{
+					string clienteJSON = fichario.Buscar(Txt_CodigoCliente.Text);
+					if (String.IsNullOrWhiteSpace(clienteJSON))
+					{
+						MessageBox.Show($"Erro: Não existe o Cliente {Txt_CodigoCliente.Text}. ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+					else
+					{
+						Cliente.Unit dadosDoCliente = new Cliente.Unit();
+						dadosDoCliente = Cliente.DesSerializedClassUnit(clienteJSON);
+						EscreveFormulario(dadosDoCliente);
+
+						Frm_Questao frm = new Frm_Questao("icons8_question_96",$"Você quer excluir o Cliente?");
+						frm.ShowDialog();
+
+						if (frm.DialogResult == DialogResult.Yes)
+						{
+							fichario.Apagar(Txt_CodigoCliente.Text);
+
+							if (fichario.status)
+							{
+								MessageBox.Show($"OK: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+								LimparFormulario();
+							}
+							else
+							{
+								MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+							}
+						}
+					}
+				}
+				else
+				{
+					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
 		}
 
 		private void LimpartoolStripButton_Click(object sender, EventArgs e)
