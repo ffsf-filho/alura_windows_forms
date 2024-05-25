@@ -247,7 +247,52 @@ namespace CursoWindowsForms
 
 		private void SalvarToolStripButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Efetuei um click sobre o botão Salvar");
+			if (String.IsNullOrWhiteSpace(Txt_CodigoCliente.Text))
+			{
+				MessageBox.Show("Código do Cliente vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Txt_CodigoCliente.Focus();
+			}
+			else
+			{
+				try
+				{
+					Cliente.Unit cliente = new Cliente.Unit();
+					cliente = LeituraFormulario();
+					cliente.Id = Txt_CodigoCliente.Text;
+					cliente.ValidaClasse();
+					cliente.ValidaComplemento();
+
+					string clienteJSON = Cliente.SerializedClassUnit(cliente);
+
+					Fichario fichario = new Fichario(_diretorio);
+
+					if (fichario.status)
+					{
+						fichario.Alterar(cliente.Id, clienteJSON);
+
+						if (fichario.status)
+						{
+							MessageBox.Show($"OK: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						}
+						else
+						{
+							MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+					else
+					{
+						MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+				catch (ValidationException ex)
+				{
+					MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
 		}
 
 		private void ApagatoolStripButton_Click(object sender, EventArgs e)
