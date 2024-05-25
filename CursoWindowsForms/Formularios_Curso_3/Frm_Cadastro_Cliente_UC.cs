@@ -109,14 +109,14 @@ namespace CursoWindowsForms
 		{
 			try
 			{
-
-
 				Cliente.Unit cliente = new Cliente.Unit();
 				cliente = LeituraFormulario();
 				cliente.Id = Txt_CodigoCliente.Text;
 				cliente.ValidaClasse();
 				cliente.ValidaComplemento();
-				MessageBox.Show("Classe foi inicializada sem erros.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				string clienteJSON = Cliente.SerializedClassUnit(cliente);
+
+				MessageBox.Show($"Cliente vai ser incluído. O conteúdo será: \n {clienteJSON} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (ValidationException ex)
 			{
