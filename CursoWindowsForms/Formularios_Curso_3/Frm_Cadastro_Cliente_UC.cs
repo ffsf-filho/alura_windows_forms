@@ -123,11 +123,20 @@ namespace CursoWindowsForms
 
 				if (fichario.status)
 				{
-					MessageBox.Show($"OK: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					fichario.Incluir(cliente.Id, clienteJSON);
+
+					if(fichario.status)
+					{
+						MessageBox.Show($"OK: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					else
+					{
+						MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
 				}
 				else
 				{
-					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (ValidationException ex)

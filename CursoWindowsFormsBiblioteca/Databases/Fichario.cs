@@ -9,23 +9,48 @@ namespace CursoWindowsFormsBiblioteca.Databases
 		public string mensagem;
 		public bool status;
 
-		public Fichario(string diretorio)
+		public Fichario(string Diretorio)
 		{
 			this.status = true;
 			try
 			{
-				if (!Directory.Exists(diretorio))
+				if (!Directory.Exists(Diretorio))
 				{
-					Directory.CreateDirectory(diretorio);
+					Directory.CreateDirectory(Diretorio);
 				}
 
-				this.diretorio = diretorio;
+				this.diretorio = Diretorio;
 				this.mensagem = "Conexão com o Fichario criada com sucesso";
 			}
 			catch (Exception ex)
 			{
 				this.status = false;
 				this.mensagem = $"Conexão com o Fichario com erro: \n {ex.Message}";
+			}
+		}
+
+		public void Incluir(string Id, string JSONUnit)
+		{
+			string pathArquivo = this.diretorio + $"\\{Id}.json";
+
+				try
+				{
+					if (File.Exists(pathArquivo))
+					{
+						this.status = false;
+						this.mensagem = $"Inclusão não permitida porque o identificador já existe: {Id}";
+					}
+					else
+					{
+						File.WriteAllText(pathArquivo, JSONUnit);
+						this.status = true;
+						this.mensagem = $"Inclusão efetuada com sucesso. Identificador: {Id}";
+					}
+				}
+				catch (Exception ex)
+				{
+					this.status = false;
+				this.mensagem = $"Conexão com o Fichario com erro: {ex.Message}";
 			}
 		}
 	}
