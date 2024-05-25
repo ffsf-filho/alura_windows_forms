@@ -97,7 +97,7 @@
 			this.Txt_CPF.Location = new System.Drawing.Point(475, 70);
 			this.Txt_CPF.Name = "Txt_CPF";
 			this.Txt_CPF.Size = new System.Drawing.Size(302, 20);
-			this.Txt_CPF.TabIndex = 6;
+			this.Txt_CPF.TabIndex = 5;
 			// 
 			// Lbl_NomeCliente
 			// 
@@ -131,7 +131,7 @@
 			this.Txt_NomePai.Location = new System.Drawing.Point(6, 109);
 			this.Txt_NomePai.Name = "Txt_NomePai";
 			this.Txt_NomePai.Size = new System.Drawing.Size(454, 20);
-			this.Txt_NomePai.TabIndex = 3;
+			this.Txt_NomePai.TabIndex = 4;
 			// 
 			// Lbl_NomeMae
 			// 
@@ -147,7 +147,7 @@
 			this.Txt_NomeMae.Location = new System.Drawing.Point(6, 70);
 			this.Txt_NomeMae.Name = "Txt_NomeMae";
 			this.Txt_NomeMae.Size = new System.Drawing.Size(454, 20);
-			this.Txt_NomeMae.TabIndex = 4;
+			this.Txt_NomeMae.TabIndex = 3;
 			// 
 			// Lbl_Bairro
 			// 
@@ -325,7 +325,7 @@
 			this.Grp_Genero.Location = new System.Drawing.Point(475, 109);
 			this.Grp_Genero.Name = "Grp_Genero";
 			this.Grp_Genero.Size = new System.Drawing.Size(302, 65);
-			this.Grp_Genero.TabIndex = 10;
+			this.Grp_Genero.TabIndex = 6;
 			this.Grp_Genero.TabStop = false;
 			this.Grp_Genero.Text = "groupBox1";
 			// 
@@ -335,7 +335,7 @@
 			this.Rdb_Indefinido.Location = new System.Drawing.Point(200, 39);
 			this.Rdb_Indefinido.Name = "Rdb_Indefinido";
 			this.Rdb_Indefinido.Size = new System.Drawing.Size(85, 17);
-			this.Rdb_Indefinido.TabIndex = 2;
+			this.Rdb_Indefinido.TabIndex = 3;
 			this.Rdb_Indefinido.TabStop = true;
 			this.Rdb_Indefinido.Text = "radioButton3";
 			this.Rdb_Indefinido.UseVisualStyleBackColor = true;
@@ -346,7 +346,7 @@
 			this.Rdb_Feminino.Location = new System.Drawing.Point(102, 41);
 			this.Rdb_Feminino.Name = "Rdb_Feminino";
 			this.Rdb_Feminino.Size = new System.Drawing.Size(85, 17);
-			this.Rdb_Feminino.TabIndex = 1;
+			this.Rdb_Feminino.TabIndex = 2;
 			this.Rdb_Feminino.TabStop = true;
 			this.Rdb_Feminino.Text = "radioButton2";
 			this.Rdb_Feminino.UseVisualStyleBackColor = true;
@@ -357,7 +357,7 @@
 			this.Rdb_Masculino.Location = new System.Drawing.Point(6, 40);
 			this.Rdb_Masculino.Name = "Rdb_Masculino";
 			this.Rdb_Masculino.Size = new System.Drawing.Size(85, 17);
-			this.Rdb_Masculino.TabIndex = 0;
+			this.Rdb_Masculino.TabIndex = 1;
 			this.Rdb_Masculino.TabStop = true;
 			this.Rdb_Masculino.Text = "radioButton1";
 			this.Rdb_Masculino.UseVisualStyleBackColor = true;
@@ -413,7 +413,7 @@
 			this.Cmb_Estados.Location = new System.Drawing.Point(584, 121);
 			this.Cmb_Estados.Name = "Cmb_Estados";
 			this.Cmb_Estados.Size = new System.Drawing.Size(193, 21);
-			this.Cmb_Estados.TabIndex = 27;
+			this.Cmb_Estados.TabIndex = 12;
 			// 
 			// Txt_Cidade
 			// 
