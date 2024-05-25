@@ -11,6 +11,8 @@ namespace CursoWindowsForms
 {
 	public partial class Frm_Cadastro_Cliente_UC : UserControl
 	{
+		private static readonly string _diretorio = Path.GetDirectoryName(Application.ExecutablePath).Replace("bin\\Debug", "Fichario");
+
 		public Frm_Cadastro_Cliente_UC()
 		{
 			InitializeComponent();
@@ -74,6 +76,8 @@ namespace CursoWindowsForms
 			Tls_Principal.Items[4].ToolTipText = "Limpa dados da tela de entrada de dados";
 
 			LimparFormulario();
+
+			Txt_CodigoCliente.Focus();
 		}
 
 		private void LimparFormulario()
@@ -98,6 +102,63 @@ namespace CursoWindowsForms
 			Rdb_Indefinido.Checked = false;
 		}
 
+		private void EscreveFormulario(Cliente.Unit dadosDoCliente)
+		{
+			Txt_NomeCliente.Text = dadosDoCliente.Nome;
+			Txt_NomeMae.Text = dadosDoCliente.NomeMae;
+
+			if (String.IsNullOrWhiteSpace(dadosDoCliente.NomePai))
+			{
+				Chk_TemPai.Checked = true;
+				Txt_NomePai.Text = "";
+			}
+			else
+			{
+				Chk_TemPai.Checked = false;
+				Txt_NomePai.Text = dadosDoCliente.NomePai;
+			}
+			
+			Txt_CPF.Text = dadosDoCliente.Cpf;
+
+			switch (dadosDoCliente.Genero)
+			{
+				case 0:
+					Rdb_Masculino.Checked = true;
+					break;
+				case 1:
+					Rdb_Feminino.Checked = true;
+					break;
+				default:
+					Rdb_Indefinido.Checked = false;
+					break;
+			}
+
+			Txt_CEP.Text = dadosDoCliente.Cep;
+			Txt_Bairro.Text = dadosDoCliente.Bairro;
+			Txt_Logradouro.Text = dadosDoCliente.Logradouro;
+			Txt_Complemento.Text = dadosDoCliente.Complemento;
+			Txt_Cidade.Text = dadosDoCliente.Cidade;
+
+			if (String.IsNullOrWhiteSpace(dadosDoCliente.Estado))
+			{
+				Cmb_Estados.SelectedIndex = -1;
+			}
+			else
+			{
+				for (int i = 0; i <= Cmb_Estados.Items.Count -1; i++)
+				{
+					if (dadosDoCliente.Estado.Equals(Cmb_Estados.Items[i].ToString()))
+					{
+						Cmb_Estados.SelectedIndex = i;
+					}
+				}
+			}
+			
+			Txt_Telefone.Text = dadosDoCliente.Telefone;
+			Txt_Profissao.Text = dadosDoCliente.Profissao;
+			Txt_RendaFamiliar.Text = dadosDoCliente.RendaFamiliar.ToString();
+		}
+
 		private void Chk_TemPai_CheckedChanged(object sender, EventArgs e)
 		{
 			Txt_NomePai.Enabled = Chk_TemPai.Checked ? false: true ;
@@ -118,8 +179,8 @@ namespace CursoWindowsForms
 				cliente.ValidaComplemento();
 
 				string clienteJSON = Cliente.SerializedClassUnit(cliente);
-				string diretorio = Path.GetDirectoryName(Application.ExecutablePath).Replace("bin\\Debug","Fichario");
-				Fichario fichario = new Fichario(diretorio);
+				
+				Fichario fichario = new Fichario(_diretorio);
 
 				if (fichario.status)
 				{
@@ -151,7 +212,27 @@ namespace CursoWindowsForms
 
 		private void AbrirToolStripButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Efetuei um click sobre o botão Abrir");
+			if (String.IsNullOrWhiteSpace(Txt_CodigoCliente.Text))
+			{
+				MessageBox.Show("Código do Cliente vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Txt_CodigoCliente.Focus();
+			}
+			else
+			{
+				Fichario fichario = new Fichario(_diretorio);
+
+				if (fichario.status)
+				{
+					string clienteJSON = fichario.Buscar(Txt_CodigoCliente.Text);
+					Cliente.Unit dadosDoCliente = new Cliente.Unit();
+					dadosDoCliente = Cliente.DesSerializedClassUnit(clienteJSON);
+					EscreveFormulario(dadosDoCliente);
+				}
+				else
+				{
+					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
 		}
 
 		private void SalvarToolStripButton_Click(object sender, EventArgs e)

@@ -33,25 +33,53 @@ namespace CursoWindowsFormsBiblioteca.Databases
 		{
 			string pathArquivo = this.diretorio + $"\\{Id}.json";
 
-				try
-				{
-					if (File.Exists(pathArquivo))
-					{
-						this.status = false;
-						this.mensagem = $"Inclusão não permitida porque o identificador já existe: {Id}";
-					}
-					else
-					{
-						File.WriteAllText(pathArquivo, JSONUnit);
-						this.status = true;
-						this.mensagem = $"Inclusão efetuada com sucesso. Identificador: {Id}";
-					}
-				}
-				catch (Exception ex)
+			try
+			{
+				if (File.Exists(pathArquivo))
 				{
 					this.status = false;
+					this.mensagem = $"Inclusão não permitida porque o identificador já existe: {Id}";
+				}
+				else
+				{
+					File.WriteAllText(pathArquivo, JSONUnit);
+					this.status = true;
+					this.mensagem = $"Inclusão efetuada com sucesso. Identificador: {Id}";
+				}
+			}
+			catch (Exception ex)
+			{
+				this.status = false;
 				this.mensagem = $"Conexão com o Fichario com erro: {ex.Message}";
 			}
+		}
+
+		public string Buscar(string Id)
+		{
+			string pathArquivo = this.diretorio + $"\\{Id}.json";
+			string conteudo = "";
+
+			try
+			{
+				if (!File.Exists(pathArquivo))
+				{
+					this.status = false;
+					this.mensagem = $"Identificador {Id} não existe.";
+				}
+				else
+				{
+					conteudo = File.ReadAllText(pathArquivo);
+					this.status = true;
+					this.mensagem = $"Identificado {Id} recuperado com sucesso.";
+				}
+			}
+			catch (Exception ex)
+			{
+				this.status = false;
+				this.mensagem = $"Erro ao buscar o conteúdo do identificador {Id}: {ex.Message}";
+			}
+
+			return conteudo;
 		}
 	}
 }
