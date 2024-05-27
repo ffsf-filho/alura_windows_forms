@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace CursoWindowsFormsBiblioteca.Databases
@@ -133,5 +134,27 @@ namespace CursoWindowsFormsBiblioteca.Databases
 			}
 		}
 
+		public List<string> BuscarTodos()
+		{
+			string pathArquivo = this.diretorio;
+			List<string> conteudo = new	List<string>();
+
+			try
+			{
+				string[] listaArquivos = Directory.GetFiles(pathArquivo, "*.json");
+
+				for (int i = 0; i < listaArquivos.Length; i++)
+				{
+					conteudo.Add(File.ReadAllText(listaArquivos[i]));
+				}
+			}
+			catch (Exception ex)
+			{
+				this.status = false;
+				this.mensagem = $"Erro ao buscar a lista de Clientes: {ex.Message}";
+			}
+
+			return conteudo;
+		}
 	}
 }

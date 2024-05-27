@@ -1,9 +1,11 @@
 ﻿using CursoWindowsForms.Formularios_Curso_1;
+using CursoWindowsForms.Formularios_Curso_5;
 using CursoWindowsFormsBiblioteca.Classes;
 using CursoWindowsFormsBiblioteca.ClassesUteis;
 using CursoWindowsFormsBiblioteca.Databases;
 using Microsoft.VisualBasic;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Windows.Forms;
@@ -76,6 +78,7 @@ namespace CursoWindowsForms
 			Tls_Principal.Items[3].ToolTipText = "Apaga o Cliente selecionado";
 			Tls_Principal.Items[4].ToolTipText = "Limpa dados da tela de entrada de dados";
 
+			Btn_Busca.Text = "Buscar";
 			LimparFormulario();
 		}
 
@@ -105,6 +108,7 @@ namespace CursoWindowsForms
 
 		private void EscreveFormulario(Cliente.Unit dadosDoCliente)
 		{
+			Txt_CodigoCliente.Text = dadosDoCliente.Id;
 			Txt_NomeCliente.Text = dadosDoCliente.Nome;
 			Txt_NomeMae.Text = dadosDoCliente.NomeMae;
 
@@ -444,6 +448,54 @@ namespace CursoWindowsForms
 						break;
 					}
 				}
+			}
+		}
+
+		private void Btn_Busca_Click(object sender, EventArgs e)
+		{
+			Fichario fichario = new Fichario(_diretorio);
+
+			if (fichario.status)
+			{
+				List<string> lista = fichario.BuscarTodos();
+
+				if (fichario.status)
+				{
+					if(lista.Count > 0)
+					{
+						List<List<string>> listabusca = new List<List<string>>();
+
+						for(int i = 0; i < lista.Count; i++)
+						{
+							Cliente.Unit cliente = Cliente.DesSerializedClassUnit(lista[i]);
+							listabusca.Add(new List<String> { cliente.Id, cliente.Nome });
+						}
+						
+						Frm_Busca frm = new Frm_Busca(listabusca);
+						frm.ShowDialog();
+
+						if (frm.DialogResult == DialogResult.OK)
+						{
+							string clienteJSON = fichario.Buscar(frm.idSelect);
+							Cliente.Unit cliente = new Cliente.Unit();
+							cliente = Cliente.DesSerializedClassUnit(clienteJSON);
+							EscreveFormulario(cliente);
+						}
+					}
+					else
+					{
+						MessageBox.Show($"Não existe nenhum Cliente Cadastrado", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+				else
+				{
+					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+			}
+			else
+			{
+				MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 	}
