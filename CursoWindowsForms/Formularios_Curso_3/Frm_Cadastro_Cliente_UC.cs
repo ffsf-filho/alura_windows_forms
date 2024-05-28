@@ -182,28 +182,7 @@ namespace CursoWindowsForms
 				cliente.Id = Txt_CodigoCliente.Text;
 				cliente.ValidaClasse();
 				cliente.ValidaComplemento();
-
-				string clienteJSON = Cliente.SerializedClassUnit(cliente);
-				
-				Fichario fichario = new Fichario(_diretorio);
-
-				if (fichario.status)
-				{
-					fichario.Incluir(cliente.Id, clienteJSON);
-
-					if(fichario.status)
-					{
-						MessageBox.Show($"OK: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					}
-					else
-					{
-						MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-				}
-				else
-				{
-					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
+				cliente.IncluirFichario(_diretorio);
 			}
 			catch (ValidationException ex)
 			{
