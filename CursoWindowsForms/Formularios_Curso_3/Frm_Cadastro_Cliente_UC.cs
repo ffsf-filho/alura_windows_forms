@@ -203,27 +203,15 @@ namespace CursoWindowsForms
 			}
 			else
 			{
-				Fichario fichario = new Fichario(_diretorio);
-
-				if (fichario.status)
+				try
 				{
-					string clienteJSON = fichario.Buscar(Txt_CodigoCliente.Text);
-
-					if (String.IsNullOrWhiteSpace(clienteJSON))
-					{
-						MessageBox.Show($"Erro: Não existe o Cliente {Txt_CodigoCliente.Text}. ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						Txt_CodigoCliente.Focus();
-					}
-					else
-					{
-						Cliente.Unit dadosDoCliente = new Cliente.Unit();
-						dadosDoCliente = Cliente.DesSerializedClassUnit(clienteJSON);
-						EscreveFormulario(dadosDoCliente);
-					}
+					Cliente.Unit cliente = new Cliente.Unit();
+					cliente = cliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
+					EscreveFormulario(cliente);
 				}
-				else
+				catch (Exception ex)
 				{
-					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}

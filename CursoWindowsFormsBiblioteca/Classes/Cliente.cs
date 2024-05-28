@@ -2,6 +2,7 @@
 using CursoWindowsFormsBiblioteca.Databases;
 using Newtonsoft.Json;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Eventing.Reader;
@@ -128,6 +129,21 @@ namespace CursoWindowsFormsBiblioteca.Classes
 					{
 						throw new Exception(fichario.mensagem);
 					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public Unit BuscarFichario(string Id, string Conexao)
+			{
+				Fichario fichario = new Fichario(Conexao);
+
+				if (fichario.status)
+				{
+					string clienteJSON = fichario.Buscar(Id);
+					return Cliente.DesSerializedClassUnit(clienteJSON);
 				}
 				else
 				{
