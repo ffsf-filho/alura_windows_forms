@@ -392,49 +392,46 @@ namespace CursoWindowsForms
 
 		private void Btn_Busca_Click(object sender, EventArgs e)
 		{
-			Fichario fichario = new Fichario(_diretorio);
-
-			if (fichario.status)
+			try
 			{
-				List<string> lista = fichario.BuscarTodos();
+				Cliente.Unit cliente = new Cliente.Unit();
+				List<string> listaFichario = cliente.ListarFichario(_diretorio);
 
-				if (fichario.status)
+				if(listaFichario == null)
 				{
-					if(lista.Count > 0)
-					{
-						List<List<string>> listabusca = new List<List<string>>();
-
-						for(int i = 0; i < lista.Count; i++)
-						{
-							Cliente.Unit cliente = Cliente.DesSerializedClassUnit(lista[i]);
-							listabusca.Add(new List<String> { cliente.Id, cliente.Nome });
-						}
-						
-						Frm_Busca frm = new Frm_Busca(listabusca);
-						frm.ShowDialog();
-
-						if (frm.DialogResult == DialogResult.OK)
-						{
-							string clienteJSON = fichario.Buscar(frm.idSelect);
-							Cliente.Unit cliente = new Cliente.Unit();
-							cliente = Cliente.DesSerializedClassUnit(clienteJSON);
-							EscreveFormulario(cliente);
-						}
-					}
-					else
-					{
-						MessageBox.Show($"Não existe nenhum Cliente Cadastrado", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
+					MessageBox.Show($"Não existe nenhum Cliente no fichario.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				else
 				{
-					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
+					List<List<string>> listabusca = new List<List<string>>();
 
+					for (int i = 0; i < listaFichario.Count; i++)
+					{
+						cliente = Cliente.DesSerializedClassUnit(listaFichario[i]);
+						listabusca.Add(new List<String> { cliente.Id, cliente.Nome });
+					}
+
+					Frm_Busca frm = new Frm_Busca(listabusca);
+					frm.ShowDialog();
+
+					if (frm.DialogResult == DialogResult.OK)
+					{
+						cliente = cliente.BuscarFichario(frm.idSelect, _diretorio);
+
+						if (cliente == null)
+						{
+							throw new Exception($"Cliente {frm.idSelect} não encontrado.");
+						}
+						else
+						{
+							EscreveFormulario(cliente);
+						}
+					}
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"Erro: {ex.Message} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 	}
