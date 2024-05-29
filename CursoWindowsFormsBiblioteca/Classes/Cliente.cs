@@ -150,6 +150,26 @@ namespace CursoWindowsFormsBiblioteca.Classes
 					throw new Exception(fichario.mensagem);
 				}
 			}
+
+			public void AlterarFichario(string Conexao)
+			{
+				Fichario fichario = new Fichario(Conexao);
+				string clienteJSON = Cliente.SerializedClassUnit(this);
+
+				if (fichario.status)
+				{
+					fichario.Alterar(this.Id, clienteJSON);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
 			#endregion
 		}
 

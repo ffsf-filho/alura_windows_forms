@@ -183,6 +183,7 @@ namespace CursoWindowsForms
 				cliente.ValidaClasse();
 				cliente.ValidaComplemento();
 				cliente.IncluirFichario(_diretorio);
+				MessageBox.Show("Código do Cliente incluído com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (ValidationException ex)
 			{
@@ -232,28 +233,8 @@ namespace CursoWindowsForms
 					cliente.Id = Txt_CodigoCliente.Text;
 					cliente.ValidaClasse();
 					cliente.ValidaComplemento();
-
-					string clienteJSON = Cliente.SerializedClassUnit(cliente);
-
-					Fichario fichario = new Fichario(_diretorio);
-
-					if (fichario.status)
-					{
-						fichario.Alterar(cliente.Id, clienteJSON);
-
-						if (fichario.status)
-						{
-							MessageBox.Show($"OK: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-						}
-						else
-						{
-							MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						}
-					}
-					else
-					{
-						MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
+					cliente.AlterarFichario(_diretorio);
+					MessageBox.Show("Código do Cliente alterado com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				catch (ValidationException ex)
 				{
