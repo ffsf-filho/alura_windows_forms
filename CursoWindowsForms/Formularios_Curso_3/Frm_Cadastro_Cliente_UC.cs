@@ -397,7 +397,7 @@ namespace CursoWindowsForms
 				Cliente.Unit cliente = new Cliente.Unit();
 				List<string> listaFichario = cliente.ListarFichario(_diretorio);
 
-				if(listaFichario == null)
+				if(listaFichario == null || listaFichario.Count == 0)
 				{
 					MessageBox.Show($"Não existe nenhum Cliente no fichario.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
