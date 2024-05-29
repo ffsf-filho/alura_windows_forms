@@ -170,6 +170,24 @@ namespace CursoWindowsFormsBiblioteca.Classes
 					throw new Exception(fichario.mensagem);
 				}
 			}
+
+			public void ApagarFichario(string Conexao)
+			{
+				Fichario fichario = new Fichario(Conexao);
+				if (fichario.status)
+				{
+					fichario.Apagar(this.Id);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
 			#endregion
 		}
 

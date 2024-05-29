@@ -208,7 +208,15 @@ namespace CursoWindowsForms
 				{
 					Cliente.Unit cliente = new Cliente.Unit();
 					cliente = cliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
-					EscreveFormulario(cliente);
+
+					if (cliente != null)
+					{
+						EscreveFormulario(cliente);
+					}
+					else
+					{
+						throw new Exception($"O Cliente {Txt_CodigoCliente.Text} não existe.");
+					}
 				}
 				catch (Exception ex)
 				{
@@ -256,43 +264,18 @@ namespace CursoWindowsForms
 			}
 			else
 			{
-				Fichario fichario = new Fichario(_diretorio);
+				Cliente.Unit dadosDoCliente = new Cliente.Unit();
+				dadosDoCliente = dadosDoCliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
+				EscreveFormulario(dadosDoCliente);
 
-				if (fichario.status)
+				Frm_Questao frm = new Frm_Questao("icons8_question_96", $"Você quer excluir o Cliente?");
+				frm.ShowDialog();
+
+				if (frm.DialogResult == DialogResult.Yes)
 				{
-					string clienteJSON = fichario.Buscar(Txt_CodigoCliente.Text);
-					if (String.IsNullOrWhiteSpace(clienteJSON))
-					{
-						MessageBox.Show($"Erro: Não existe o Cliente {Txt_CodigoCliente.Text}. ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-					else
-					{
-						Cliente.Unit dadosDoCliente = new Cliente.Unit();
-						dadosDoCliente = Cliente.DesSerializedClassUnit(clienteJSON);
-						EscreveFormulario(dadosDoCliente);
-
-						Frm_Questao frm = new Frm_Questao("icons8_question_96",$"Você quer excluir o Cliente?");
-						frm.ShowDialog();
-
-						if (frm.DialogResult == DialogResult.Yes)
-						{
-							fichario.Apagar(Txt_CodigoCliente.Text);
-
-							if (fichario.status)
-							{
-								MessageBox.Show($"OK: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-								LimparFormulario();
-							}
-							else
-							{
-								MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-							}
-						}
-					}
-				}
-				else
-				{
-					MessageBox.Show($"Erro: {fichario.mensagem} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					dadosDoCliente.ApagarFichario(_diretorio);
+					MessageBox.Show($"OK: Código {Txt_CodigoCliente.Text} do Cliente apgado", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					LimparFormulario();
 				}
 			}
 		}
