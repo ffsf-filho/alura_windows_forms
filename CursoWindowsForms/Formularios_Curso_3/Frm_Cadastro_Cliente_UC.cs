@@ -266,16 +266,24 @@ namespace CursoWindowsForms
 			{
 				Cliente.Unit dadosDoCliente = new Cliente.Unit();
 				dadosDoCliente = dadosDoCliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
-				EscreveFormulario(dadosDoCliente);
 
-				Frm_Questao frm = new Frm_Questao("icons8_question_96", $"Você quer excluir o Cliente?");
-				frm.ShowDialog();
-
-				if (frm.DialogResult == DialogResult.Yes)
+				if(dadosDoCliente != null)
 				{
-					dadosDoCliente.ApagarFichario(_diretorio);
-					MessageBox.Show($"OK: Código {Txt_CodigoCliente.Text} do Cliente apgado", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					LimparFormulario();
+					EscreveFormulario(dadosDoCliente);
+
+					Frm_Questao frm = new Frm_Questao("icons8_question_96", $"Você quer excluir o Cliente?");
+					frm.ShowDialog();
+
+					if (frm.DialogResult == DialogResult.Yes)
+					{
+						dadosDoCliente.ApagarFichario(_diretorio);
+						MessageBox.Show($"OK: Código {Txt_CodigoCliente.Text} do Cliente apagado", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						LimparFormulario();
+					}
+				}
+				else
+				{
+					MessageBox.Show($"Erro: O Código {Txt_CodigoCliente.Text} do Cliente não existe", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
