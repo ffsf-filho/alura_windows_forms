@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CursoWindowsFormsBiblioteca.Databases
 {
 	public class LocalDBClass
 	{
-        public string stringConn;
-        public SqlConnection connDB;
+		public string stringConn;
+		public SqlConnection connDB;
 
 		public LocalDBClass()
 		{
@@ -63,9 +58,9 @@ namespace CursoWindowsFormsBiblioteca.Databases
 			{
 				throw new Exception(ex.Message);
 			}
-			finally 
-			{ 
-				Close(); 
+			finally
+			{
+				Close();
 			}
 
 			return dt;
@@ -75,5 +70,5 @@ namespace CursoWindowsFormsBiblioteca.Databases
 		{
 			connDB.Close();
 		}
-    }
+	}
 }
