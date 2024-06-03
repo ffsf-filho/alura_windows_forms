@@ -182,7 +182,8 @@ namespace CursoWindowsForms
 				cliente.Id = Txt_CodigoCliente.Text;
 				cliente.ValidaClasse();
 				cliente.ValidaComplemento();
-				cliente.IncluirFichario(_diretorio);
+				//cliente.IncluirFichario(_diretorio);
+				cliente.IncluirFicharioDB("Cliente");
 				MessageBox.Show("Código do Cliente incluído com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (ValidationException ex)
@@ -207,7 +208,8 @@ namespace CursoWindowsForms
 				try
 				{
 					Cliente.Unit cliente = new Cliente.Unit();
-					cliente = cliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
+					//cliente = cliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
+					cliente = cliente.BuscarFicharioDB(Txt_CodigoCliente.Text, "Cliente");
 
 					if (cliente != null)
 					{
@@ -241,7 +243,8 @@ namespace CursoWindowsForms
 					cliente.Id = Txt_CodigoCliente.Text;
 					cliente.ValidaClasse();
 					cliente.ValidaComplemento();
-					cliente.AlterarFichario(_diretorio);
+					//cliente.AlterarFichario(_diretorio);
+					cliente.AlterarFicharioDB("Cliente");
 					MessageBox.Show("Código do Cliente alterado com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				catch (ValidationException ex)
@@ -265,9 +268,10 @@ namespace CursoWindowsForms
 			else
 			{
 				Cliente.Unit dadosDoCliente = new Cliente.Unit();
-				dadosDoCliente = dadosDoCliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
+				//dadosDoCliente = dadosDoCliente.BuscarFichario(Txt_CodigoCliente.Text, _diretorio);
+				dadosDoCliente = dadosDoCliente.BuscarFicharioDB(Txt_CodigoCliente.Text, "Cliente");
 
-				if(dadosDoCliente != null)
+				if (dadosDoCliente != null)
 				{
 					EscreveFormulario(dadosDoCliente);
 
@@ -276,7 +280,8 @@ namespace CursoWindowsForms
 
 					if (frm.DialogResult == DialogResult.Yes)
 					{
-						dadosDoCliente.ApagarFichario(_diretorio);
+						//dadosDoCliente.ApagarFichario(_diretorio);
+						dadosDoCliente.ApagarFicharioDB("Cliente");
 						MessageBox.Show($"OK: Código {Txt_CodigoCliente.Text} do Cliente apagado", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						LimparFormulario();
 					}
@@ -395,9 +400,10 @@ namespace CursoWindowsForms
 			try
 			{
 				Cliente.Unit cliente = new Cliente.Unit();
-				List<string> listaFichario = cliente.ListarFichario(_diretorio);
+				//List<string> listaFichario = cliente.ListarFichario(_diretorio);
+				List<string> listaFichario = cliente.ListarFicharioDB("Cliente");
 
-				if(listaFichario == null || listaFichario.Count == 0)
+				if (listaFichario == null || listaFichario.Count == 0)
 				{
 					MessageBox.Show($"Não existe nenhum Cliente no fichario.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
@@ -416,7 +422,8 @@ namespace CursoWindowsForms
 
 					if (frm.DialogResult == DialogResult.OK)
 					{
-						cliente = cliente.BuscarFichario(frm.idSelect, _diretorio);
+						//cliente = cliente.BuscarFichario(frm.idSelect, _diretorio);
+						cliente = cliente.BuscarFicharioDB(frm.idSelect, "Cliente");
 
 						if (cliente == null)
 						{

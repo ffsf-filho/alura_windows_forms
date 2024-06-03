@@ -35,10 +35,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
 			{
 				throw new Exception(ex.Message);
 			}
-			finally
-			{
-				Close();
-			}
+			//finally
+			//{
+			//	Close();
+			//}
 
 			return "";
 		}
@@ -58,10 +58,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
 			{
 				throw new Exception(ex.Message);
 			}
-			finally
-			{
-				Close();
-			}
+			//finally
+			//{
+			//	Close();
+			//}
 
 			return dt;
 		}

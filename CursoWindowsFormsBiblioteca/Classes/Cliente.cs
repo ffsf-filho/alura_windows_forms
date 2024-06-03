@@ -207,6 +207,99 @@ namespace CursoWindowsFormsBiblioteca.Classes
 				return todosJSON;
 			}
 			#endregion
+
+			#region "CRUD do FicharioDB LocalDB"
+			public void IncluirFicharioDB(string Conexao)
+			{
+				string clienteJSON = SerializedClassUnit(this);
+				FicharioDB fichario = new FicharioDB(Conexao);
+
+				if (fichario.status)
+				{
+					fichario.Incluir(this.Id, clienteJSON);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public Unit BuscarFicharioDB(string Id, string Conexao)
+			{
+				FicharioDB fichario = new FicharioDB(Conexao);
+
+				if (fichario.status)
+				{
+					string clienteJSON = fichario.Buscar(Id);
+					return Cliente.DesSerializedClassUnit(clienteJSON);
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public void AlterarFicharioDB(string Conexao)
+			{
+				FicharioDB fichario = new FicharioDB(Conexao);
+				string clienteJSON = Cliente.SerializedClassUnit(this);
+
+				if (fichario.status)
+				{
+					fichario.Alterar(this.Id, clienteJSON);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public void ApagarFicharioDB(string Conexao)
+			{
+				FicharioDB fichario = new FicharioDB(Conexao);
+				if (fichario.status)
+				{
+					fichario.Apagar(this.Id);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public List<string> ListarFicharioDB(string Conexao)
+			{
+				List<string> todosJSON;
+
+				FicharioDB fichario = new FicharioDB(Conexao);
+
+				if (fichario.status)
+				{
+					todosJSON = fichario.BuscarTodos();
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+
+				return todosJSON;
+			}
+			#endregion
 		}
 
 		public class List

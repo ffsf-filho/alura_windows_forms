@@ -44,6 +44,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
 				this.status = false;
 				this.mensagem = $"Conexão com o bamco de dados Fichario com erro: {ex.Message}";
 			}
+			finally 
+			{ 
+				db.Close();
+			}
 		}
 
 		public string Buscar(string Id)
@@ -71,6 +75,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
 			{
 				status = false;
 				mensagem = $"Erro ao buscar o conteúdo do Cliente {Id}: {ex.Message}";
+			}
+			finally
+			{ 
+				db.Close(); 
 			}
 
 			return conteudo;
@@ -107,6 +115,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
 				this.status = false;
 				this.mensagem = $"Erro ao buscar a lista de Clientes: {ex.Message}";
 			}
+			finally
+			{
+				db.Close();
+			}
 
 			return conteudo;
 		}
@@ -115,11 +127,14 @@ namespace CursoWindowsFormsBiblioteca.Databases
 		{
 			try
 			{
-				string fraseSQL = $"DELETE FROM {tabela} WHERE Id = '{Id}'";
+				string fraseSQL = $"SELECT * FROM {tabela} WHERE Id = '{Id}'";
 				DataTable dt = db.SQLQuery(fraseSQL);
 
 				if (dt.Rows.Count > 0)
 				{
+					fraseSQL = $"DELETE FROM {tabela} WHERE Id = '{Id}'";
+					db.SqlCommand(fraseSQL);
+
 					status = true;
 					mensagem = $"O Cliente '{Id}' foi excluído com sucesso.";
 				}
@@ -134,6 +149,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
 				this.status = false;
 				this.mensagem = $"Erro ao apagar o Cliente '{Id}' na base de dados: {ex.Message}";
 			}
+			finally 
+			{ 
+				db.Close(); 
+			}	
 		}
 
 
@@ -146,7 +165,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
 
 				if (dt.Rows.Count > 0)
 				{
-					fraseSQL = $"UPDATE FROM {tabela} SET json = '{JSONUnit}' WHERE Id = '{Id}'";
+					fraseSQL = $"UPDATE {tabela} SET json = '{JSONUnit}' WHERE Id = '{Id}'";
 					db.SqlCommand(fraseSQL);
 					status = true;
 					mensagem = $"O Cliente '{Id}' foi alterado com sucesso.";
@@ -161,6 +180,10 @@ namespace CursoWindowsFormsBiblioteca.Databases
 			{
 				status = false;
 				mensagem = $"Ocorreu um erro ao tentar executar uma alteração no banco de dados Fichario: {ex.Message}";
+			}
+			finally
+			{ 
+				db.Close(); 
 			}
 		}
 	}
