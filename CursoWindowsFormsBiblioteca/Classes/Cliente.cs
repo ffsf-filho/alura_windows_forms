@@ -300,6 +300,99 @@ namespace CursoWindowsFormsBiblioteca.Classes
 				return todosJSON;
 			}
 			#endregion
+
+			#region "CRUD do Fichario SQLServer"
+			public void IncluirFicharioSQL(string Conexao)
+			{
+				string clienteJSON = SerializedClassUnit(this);
+				FicharioSQLServer fichario = new FicharioSQLServer(Conexao);
+
+				if (fichario.status)
+				{
+					fichario.Incluir(this.Id, clienteJSON);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public Unit BuscarFicharioSQL(string Id, string Conexao)
+			{
+				FicharioSQLServer fichario = new FicharioSQLServer(Conexao);
+
+				if (fichario.status)
+				{
+					string clienteJSON = fichario.Buscar(Id);
+					return Cliente.DesSerializedClassUnit(clienteJSON);
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public void AlterarFicharioSQL(string Conexao)
+			{
+				FicharioSQLServer fichario = new FicharioSQLServer(Conexao);
+				string clienteJSON = Cliente.SerializedClassUnit(this);
+
+				if (fichario.status)
+				{
+					fichario.Alterar(this.Id, clienteJSON);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public void ApagarFicharioSQL(string Conexao)
+			{
+				FicharioSQLServer fichario = new FicharioSQLServer(Conexao);
+				if (fichario.status)
+				{
+					fichario.Apagar(this.Id);
+
+					if (!fichario.status)
+					{
+						throw new Exception(fichario.mensagem);
+					}
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+			}
+
+			public List<string> ListarFicharioSQL(string Conexao)
+			{
+				List<string> todosJSON;
+
+				FicharioSQLServer fichario = new FicharioSQLServer(Conexao);
+
+				if (fichario.status)
+				{
+					todosJSON = fichario.BuscarTodos();
+				}
+				else
+				{
+					throw new Exception(fichario.mensagem);
+				}
+
+				return todosJSON;
+			}
+			#endregion
 		}
 
 		public class List
