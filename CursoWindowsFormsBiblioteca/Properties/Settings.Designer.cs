@@ -33,5 +33,16 @@ namespace CursoWindowsFormsBiblioteca.Properties {
                 return ((string)(this["FicharioConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost,1438;Initial Catalog=ByteBank;Persist Security Info=True;Us" +
+            "er ID=sa;Password=ssExpress1823;TrustServerCertificate=True")]
+        public string ByteBankConnectionString {
+            get {
+                return ((string)(this["ByteBankConnectionString"]));
+            }
+        }
     }
 }
