@@ -4,19 +4,19 @@ using System.Data;
 
 namespace CursoWindowsFormsBiblioteca.Databases
 {
-	public class FicharioDB
+	public class FicharioSQLServer
 	{
 		public string mensagem;
 		public bool status;
 		public string tabela;
-		public LocalDBClass db;
+		public SQLServerClass db;
 
-		public FicharioDB(string nomeTabela)
+		public FicharioSQLServer(string nomeTabela)
 		{
 			status = true;
 			try
 			{
-				db = new LocalDBClass();
+				db = new SQLServerClass();
 				tabela = nomeTabela;
 				mensagem = $"Conexão com a Tabela '{nomeTabela}' criada com sucesso.";
 			}
@@ -152,7 +152,6 @@ namespace CursoWindowsFormsBiblioteca.Databases
 				db.Close();
 			}
 		}
-
 
 		public void Alterar(string Id, string JSONUnit)
 		{
