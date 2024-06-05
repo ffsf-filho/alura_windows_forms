@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,7 +14,8 @@ namespace CursoWindowsFormsBiblioteca.Databases
 		{
 			try
 			{
-				stringConn = @"Data Source=localhost,1438;Initial Catalog=ByteBank;Persist Security Info=True;User ID=sa;Password=ssExpress1823;TrustServerCertificate=True";
+				//stringConn = @"Data Source=localhost,1438;Initial Catalog=ByteBank;Persist Security Info=True;User ID=sa;Password=ssExpress1823;TrustServerCertificate=True";
+				stringConn = ConfigurationManager.ConnectionStrings["ByteBank"].ConnectionString;
 				connDB = new SqlConnection(stringConn);
 				connDB.Open();
 			}

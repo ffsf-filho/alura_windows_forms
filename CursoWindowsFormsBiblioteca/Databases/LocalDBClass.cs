@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,7 +14,8 @@ namespace CursoWindowsFormsBiblioteca.Databases
 		{
 			try
 			{
-				stringConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\FranciscoFlorentino\Visual Studio 2022\alura_windows_forms\CursoWindowsFormsBiblioteca\Databases\Fichario.mdf"";Integrated Security=True";
+				//stringConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\FranciscoFlorentino\Visual Studio 2022\alura_windows_forms\CursoWindowsFormsBiblioteca\Databases\Fichario.mdf"";Integrated Security=True";
+				stringConn = ConfigurationManager.ConnectionStrings["Fichario"].ConnectionString;
 				connDB = new SqlConnection(stringConn);
 				connDB.Open();
 			}
