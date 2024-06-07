@@ -393,6 +393,50 @@ namespace CursoWindowsFormsBiblioteca.Classes
 				return todosJSON;
 			}
 			#endregion
+
+			#region "CRUD do Fichario DB SQL Server Relacional"
+			#region "Funções auxiliares"
+			public string ToInsert()
+			{
+				string SQL = @"INSERT INTO TB_Cliente(
+								Id,
+								Nome,
+								NomePai,
+								NomeMae,
+								NaoTemPai,
+								Cpf,
+								Genero,
+								Cep,
+								Logradouro,
+								Complemento,
+								Bairro,
+								Cidade,
+								Estado,
+								Telefone,
+								Profissao,
+								RendaFamiliar) 
+								VALUES (";
+				SQL += "'" + this.Id + "', ";
+				SQL += "'" + this.Nome + "', ";
+				SQL += "'" + this.NomePai + "', ";
+				SQL += "'" + this.NomeMae + "', ";
+				SQL += Convert.ToInt32(this.NaoTemPai).ToString() + ", ";
+				SQL += "'" + this.Cpf + "', ";
+				SQL += Convert.ToInt32(this.Genero).ToString() + ", ";
+				SQL += "'" + this.Cep + "', ";
+				SQL += "'" + this.Logradouro + "', ";
+				SQL += "'" + this.Complemento + "', ";
+				SQL += "'" + this.Bairro + "', ";
+				SQL += "'" + this.Cidade + "', ";
+				SQL += "'" + this.Estado + "', ";
+				SQL += "'" + this.Telefone + "', ";
+				SQL += "'" + this.Profissao + "', ";
+				SQL += Convert.ToString(this.RendaFamiliar) + ")";
+
+				return SQL;
+			}
+			#endregion
+			#endregion
 		}
 
 		public class List
