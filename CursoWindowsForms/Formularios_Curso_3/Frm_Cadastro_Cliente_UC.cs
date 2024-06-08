@@ -79,6 +79,9 @@ namespace CursoWindowsForms
 			Tls_Principal.Items[4].ToolTipText = "Limpa dados da tela de entrada de dados";
 
 			Btn_Busca.Text = "Buscar";
+			Grp_DataGrid.Text = "Clientes";
+
+			AtualizaGrid();
 			LimparFormulario();
 		}
 
@@ -187,6 +190,7 @@ namespace CursoWindowsForms
 				//cliente.IncluirFicharioSQL("Cliente");
 				cliente.IncluirFicharioSQLREL();
 				MessageBox.Show("Código do Cliente incluído com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				AtualizaGrid();
 			}
 			catch (ValidationException ex)
 			{
@@ -252,6 +256,7 @@ namespace CursoWindowsForms
 					//cliente.AlterarFicharioSQL("Cliente");
 					cliente.AlterarFicharioSQLREL();
 					MessageBox.Show("Código do Cliente alterado com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					AtualizaGrid();
 				}
 				catch (ValidationException ex)
 				{
@@ -270,6 +275,7 @@ namespace CursoWindowsForms
 			{
 				MessageBox.Show("Código do Cliente vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				Txt_CodigoCliente.Focus();
+				AtualizaGrid();
 			}
 			else
 			{
@@ -446,6 +452,29 @@ namespace CursoWindowsForms
 							EscreveFormulario(cliente);
 						}
 					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Erro: {ex.Message} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void AtualizaGrid()
+		{
+			try
+			{
+				Cliente.Unit cliente = new Cliente.Unit();
+				List<List<string>> listaFichario = cliente.ListarFicharioSQLREL();
+				Dg_Clientes.Rows.Clear();
+
+				for(int i = 0; i < listaFichario.Count; i++)
+				{
+					DataGridViewRow row = new DataGridViewRow();
+					row.CreateCells(Dg_Clientes);
+					row.Cells[0].Value = listaFichario[i][0].ToString();
+					row.Cells[1].Value = listaFichario[i][1].ToString();
+					Dg_Clientes.Rows.Add(row);
 				}
 			}
 			catch (Exception ex)
