@@ -482,5 +482,26 @@ namespace CursoWindowsForms
 				MessageBox.Show($"Erro: {ex.Message} ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+		private void Dg_Clientes_DoubleClick(object sender, EventArgs e)
+		{
+			try
+			{
+				DataGridViewRow row = new DataGridViewRow();
+				row = Dg_Clientes.SelectedRows[0];
+				string Id = row.Cells[0].Value.ToString();
+				Cliente.Unit cliente = new Cliente.Unit();
+				cliente = cliente.BuscarFicharioSQLREL(Id);
+
+				if (cliente != null)
+				{
+					EscreveFormulario(cliente);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 	}
 }
