@@ -5,7 +5,9 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace CursoWindowsFormsBiblioteca.Classes
@@ -456,6 +458,29 @@ namespace CursoWindowsFormsBiblioteca.Classes
 				SQL += $"RendaFamiliar = {this.RendaFamiliar} ";
 				SQL += $"WHERE Id = {this.Id};";
 				return SQL;
+			}
+
+			public Unit DataRowToUnit(DataRow dr)
+			{
+				Unit retorno = new Unit()
+				{
+					Id = dr["Id"].ToString(),
+					Nome = dr["Nome"].ToString(),
+					NomePai = dr["NomePai"].ToString(),
+					NomeMae = dr["NomeMae"].ToString(),
+					NaoTemPai = Convert.ToBoolean(Convert.ToInt32(dr["NaoTemPai"])),
+					Cpf = dr["Cpf"].ToString(),
+					Logradouro = dr["Logradouro"].ToString(),
+					Complemento = dr["Complemento"].ToString(),
+					Bairro = dr["Bairro"].ToString(),
+					Cidade = dr["Cidade"].ToString(),
+					Estado = dr["Estado"].ToString(),
+					Telefone = dr["Telefone"].ToString(),
+					Profissao = dr["Profissao"].ToString(),
+					RendaFamiliar = Convert.ToDouble(dr["RendaFamiliar"])
+				};
+				
+				return retorno;
 			}
 			#endregion
 			#endregion
