@@ -172,6 +172,12 @@
     <Compile Include="Formularios_Curso_5\Frm_Busca.Designer.cs">
       <DependentUpon>Frm_Busca.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios_Curso_7\Frm_Agencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Curso_7\Frm_Agencia.Designer.cs">
+      <DependentUpon>Frm_Agencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios_Curso_5\Frm_Busca.resx">
       <DependentUpon>Frm_Busca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Curso_7\Frm_Agencia.resx">
+      <DependentUpon>Frm_Agencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
@@ -373,6 +382,7 @@
     <Content Include="Imagens\icons8-folder-94.png" />
     <Content Include="Imagens\key.png" />
     <Content Include="Imagens\LimparBarra.png" />
+    <Content Include="Imagens\money.ico" />
     <Content Include="Imagens\money.png" />
     <Content Include="Imagens\user.png" />
     <None Include="Imagens\icons8-question-96.ico" />
