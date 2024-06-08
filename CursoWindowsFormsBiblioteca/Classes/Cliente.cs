@@ -401,24 +401,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
 			#region "Funções auxiliares"
 			public string ToInsert()
 			{
-				string SQL = @"INSERT INTO TB_Cliente(
-								Id,
-								Nome,
-								NomePai,
-								NomeMae,
-								NaoTemPai,
-								Cpf,
-								Genero,
-								Cep,
-								Logradouro,
-								Complemento,
-								Bairro,
-								Cidade,
-								Estado,
-								Telefone,
-								Profissao,
-								RendaFamiliar) 
-								VALUES (";
+				string SQL = @"INSERT INTO TB_Cliente (Id, Nome, NomePai, NomeMae, NaoTemPai, Cpf, Genero, Cep, Logradouro, Complemento, Bairro, Cidade, Estado, Telefone, Profissao,RendaFamiliar) VALUES (";
 				SQL += "'" + this.Id + "', ";
 				SQL += "'" + this.Nome + "', ";
 				SQL += "'" + this.NomePai + "', ";
@@ -434,7 +417,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
 				SQL += "'" + this.Estado + "', ";
 				SQL += "'" + this.Telefone + "', ";
 				SQL += "'" + this.Profissao + "', ";
-				SQL += Convert.ToString(this.RendaFamiliar) + ");";
+				SQL += Convert.ToString(this.RendaFamiliar).Replace(",", ".") + ");";
 
 				return SQL;
 			}
@@ -471,6 +454,8 @@ namespace CursoWindowsFormsBiblioteca.Classes
 					NomeMae = dr["NomeMae"].ToString(),
 					NaoTemPai = Convert.ToBoolean(Convert.ToInt32(dr["NaoTemPai"])),
 					Cpf = dr["Cpf"].ToString(),
+					Genero = Convert.ToInt32(dr["Genero"]),
+					Cep = dr["Cep"].ToString(),
 					Logradouro = dr["Logradouro"].ToString(),
 					Complemento = dr["Complemento"].ToString(),
 					Bairro = dr["Bairro"].ToString(),
