@@ -397,6 +397,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
 			#endregion
 
 			#region "CRUD do Fichario DB SQL Server Relacional"
+
 			#region "Funções auxiliares"
 			public string ToInsert()
 			{
@@ -438,7 +439,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
 				return SQL;
 			}
 
-			public string ToUpdate()
+			public string ToUpdate(string Id)
 			{
 				string SQL = @"UPDATE TB_Cliente SET ";
 				SQL += $"Nome = '{this.Nome}', ";
@@ -456,7 +457,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
 				SQL += $"Telefone = '{this.Telefone}', ";
 				SQL += $"Profissao = '{this.Profissao}', ";
 				SQL += $"RendaFamiliar = {this.RendaFamiliar} ";
-				SQL += $"WHERE Id = {this.Id};";
+				SQL += $"WHERE Id = {Id};";
 				return SQL;
 			}
 
@@ -480,6 +481,148 @@ namespace CursoWindowsFormsBiblioteca.Classes
 					RendaFamiliar = Convert.ToDouble(dr["RendaFamiliar"])
 				};
 				
+				return retorno;
+			}
+			#endregion
+
+			#region CRUD Funções de manipulação do banco de dados
+			public void IncluirFicharioSQLREL()
+			{
+				SQLServerClass db = new SQLServerClass();
+
+				try
+				{
+					string SQL = this.ToInsert();
+					db.SqlCommand(SQL);
+				}
+				catch (Exception ex)
+				{
+					throw new Exception($"Inclusão não permitida. Cliente {this.Id}, Erro: {ex.Message}");
+				}
+				finally
+				{
+					db.Close();
+				}
+			}
+
+			public Unit BuscarFicharioSQLREL(string Id)
+			{
+				SQLServerClass  db = new SQLServerClass();
+				Unit retorno;
+
+				try
+				{
+					string SQL = $"SELECT * FROM TB_Cliente WHERE Id= {Id};";
+					DataTable dt = db.SQLQuery(SQL);
+
+					if(dt.Rows.Count == 0)
+					{
+						throw new Exception($"Cliente '{Id}' não existente.");
+					}
+
+					retorno = this.DataRowToUnit(dt.Rows[0]);
+				}
+				catch (Exception ex)
+				{
+					throw new Exception($"Erro ao buscar o Cliente '{this.Id}': {ex.Message}");
+				}
+				finally
+				{
+					db.Close ();
+				}
+
+				return retorno;
+			}
+
+			public void AlterarFicharioSQLREL()
+			{
+				SQLServerClass db = new SQLServerClass();
+
+				try
+				{
+					string SQL = $"SELECT * FROM TB_Cliente WHERE Id= {this.Id};";
+					DataTable dt = db.SQLQuery(SQL);
+
+					if (dt.Rows.Count == 0)
+					{
+						throw new Exception($"Cliente '{this.Id}' não existente.");
+					}
+					else
+					{
+						SQL = this.ToUpdate(this.Id);
+						db.SqlCommand(SQL);
+					}
+				}
+				catch (Exception ex)
+				{
+					throw new Exception($"Erro ao alterar o Cliente '{Id}', Mensagem: {ex.Message}.");
+				}
+				finally
+				{
+					db.Close();
+				}
+			}
+
+			public void ApagarFicharioSQLREL()
+			{
+				SQLServerClass db = new SQLServerClass();
+
+				try
+				{
+					string SQL = $"SELECT * FROM TB_Cliente WHERE Id= {this.Id};";
+					DataTable dt = db.SQLQuery(SQL);
+
+					if (dt.Rows.Count == 0)
+					{
+						throw new Exception($"Cliente '{this.Id}' não existente.");
+					}
+					else
+					{
+						SQL = $"DELETE FROM TB_Cliente WHERE Id = {this.Id};";
+						db.SqlCommand(SQL);
+					}
+				}
+				catch (Exception ex)
+				{
+					throw new Exception($"Erro ao excluir o Cliente '{Id}', Mensagem: {ex.Message}.");
+				}
+				finally
+				{
+					db.Close();
+				}
+			}
+
+			public List<List<string>> ListarFicharioSQLREL()
+			{
+				SQLServerClass db = new SQLServerClass();
+				List<List<string>> retorno = new List<List<string>>();
+
+				try
+				{
+					string SQL = $"SELECT * FROM TB_Cliente;";
+					DataTable dt = db.SQLQuery(SQL);
+
+					if (dt.Rows.Count == 0)
+					{
+						throw new Exception($"Cliente '{this.Id}' não existente.");
+					}
+					else
+					{
+						foreach (DataRow dr in dt.Rows)
+						{
+							retorno.Add(new List<string> {dr["Id"].ToString(), dr["Nome"].ToString() });
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+					throw new Exception($"Erro ao buscar os Clientes, Mensagem: {ex.Message}.");
+				}
+				finally
+				{
+					db.Close();
+				}
+
 				return retorno;
 			}
 			#endregion
