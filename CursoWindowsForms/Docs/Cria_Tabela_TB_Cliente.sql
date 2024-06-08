@@ -19,3 +19,8 @@ CREATE TABLE TB_Cliente (
 	Profissao nvarchar(50) null,
 	RendaFamiliar float null
 )
+
+INSERT INTO TB_Cliente(Id,Nome,NomePai,NomeMae,NaoTemPai,Cpf,Genero,Cep,Logradouro,Complemento,Bairro,Cidade,Estado,Telefone,Profissao,RendaFamiliar) 
+VALUES ('000001','Rosa SQL Server','Jonas SQL Server','Maria SQL Server',1,'11430997885','1','01415001','Rua Bela Cintra,33','1º andar','Consolação','São Paulo','São Paulo(SP)','1133334444','Faxineira',2500.28);
+
+Select * from TB_Cliente
